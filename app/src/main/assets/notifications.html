@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Notifications - Budakattu-Sante</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Epilogue:wght@600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#ffffff",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "surface": "transparent",
+                        "on-primary-fixed": "#1a1c1c",
+                        "tertiary": "#705d00",
+                        "on-tertiary-fixed": "#221b00",
+                        "on-secondary-fixed": "#00210c",
+                        "surface-container-high": "transparent",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#00743a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#ffffff",
+                        "inverse-on-surface": "transparent",
+                        "outline": "#747878",
+                        "on-background": "#161c22",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "transparent",
+                        "on-primary-fixed-variant": "#454747",
+                        "primary": "#5d5f5f",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#8b7400",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#5d5f5f",
+                        "secondary": "#006d36",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "secondary-container": "#83fba5",
+                        "primary-fixed": "#e2e2e2",
+                        "outline-variant": "#c4c7c8",
+                        "tertiary-fixed": "#ffe16d",
+                        "surface-container": "transparent",
+                        "on-surface": "#161c22",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "transparent",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#444748",
+                        "surface-bright": "transparent",
+                        "secondary-fixed": "#83fba5",
+                        "on-primary-container": "#747676",
+                        "inverse-surface": "#2b3137",
+                        "inverse-primary": "#c6c6c7",
+                        "secondary-fixed-dim": "#66dd8b",
+                        "on-secondary-fixed-variant": "#005227",
+                        "surface-container-highest": "transparent",
+                        "surface-variant": "transparent",
+                        "background": "transparent"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "section-gap": "48px",
+                        "container-margin": "24px",
+                        "card-padding": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "h2": ["Epilogue"],
+                        "price-display": ["Space Grotesk"],
+                        "body-lg": ["Manrope"],
+                        "h1": ["Epilogue"],
+                        "label-caps": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h2": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "price-display": ["24px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html,
+        body {
+            background-color: transparent !important;
+            background: transparent !important;
+        }
+
+        body {
+            background-color: theme('colors.background');
+            background-image: radial-gradient(circle at top right, rgba(131, 251, 165, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at bottom left, rgba(233, 196, 0, 0.05) 0%, transparent 40%);
+            min-height: 100vh;
+        }
+
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.5), 0 40px 40px rgba(0, 109, 54, 0.02);
+        }
+
+        .icon-glow-emerald {
+            filter: drop-shadow(0 4px 12px rgba(0, 109, 54, 0.3));
+        }
+
+        .icon-glow-gold {
+            filter: drop-shadow(0 4px 12px rgba(139, 116, 0, 0.3));
+        }
+
+        .icon-glow-blue {
+            filter: drop-shadow(0 4px 12px rgba(68, 71, 72, 0.2));
+        }
+
+        body {
+            min-height: 100dvh;
+        }
+
+        .active-glow {
+            box-shadow: 0 0 15px rgba(0, 109, 54, 0.15);
+        }
+    </style>
+    <script src="i18n.js" defer></script>
+</head>
+
+<body id="notifications-body" class="text-on-surface pb-32 pt-24 font-body-md antialiased selection:bg-secondary/20">
+
+    <!-- Navigation Drawer (Desktop/Tablet) - Shown ONLY for Sellers -->
+    <nav id="seller-sidebar"
+        class="hidden flex-col h-full p-gutter bg-white/80 dark:bg-surface-container-highest/90 backdrop-blur-[40px] docked left-0 h-full w-80 rounded-r-xl border-r border-white/20 shadow-2xl fixed top-0 z-40 transition-transform duration-500">
+        <div class="mb-10 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary/20 shadow-sm shrink-0">
+                <img alt="User Profile Avatar" class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiIrwLeeGxhoNLDiQgCuHi7Kmw-4LckbH61ADptTefcexEzojO6k8-zB-QdjUHfCEoWhGA4hW-RAIPzcFTpmfqEor3J3T1mYCiePRvMgH9-1T7cZ9gwWLENtZozud60ExaNwcE7WzbgTIt360E9YTmyYPj8llovwIIjqwwVHiHS1Pb2Wk2bKGCaHlExfUe4U_XXfrKb9JG9wZtNh90WVGIwLRWJuzUlaUj42A-zMp8LPLWEe7E3w00nimPxKLVsSqZMiGBeokaeb0h" />
+            </div>
+            <div>
+                <h2 class="font-h2 text-lg text-secondary font-bold">Soliga Co-op Leader</h2>
+                <p class="font-body-md text-xs text-on-surface-variant font-medium">Verified Tribal Seller</p>
+                <p class="font-label-caps text-[10px] text-secondary/60 mt-1 font-bold">Co-op ID: SLG-2026</p>
+            </div>
+        </div>
+        <ul class="flex flex-col gap-2 font-body-lg text-body-lg">
+            <li>
+                <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-secondary hover:bg-secondary/5 transition-all rounded-lg"
+                    href="seller_dashboard.html">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    Seller Dashboard
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-secondary hover:bg-secondary/5 transition-all rounded-lg"
+                    href="seller_discover.html">
+                    <span class="material-symbols-outlined">explore</span>
+                    Seller Discover
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-secondary hover:bg-secondary/5 transition-all rounded-lg"
+                    href="origin.html">
+                    <span class="material-symbols-outlined">account_tree</span>
+                    Supply Chain Trace
+                </a>
+            </li>
+            <li>
+                <a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-secondary hover:bg-secondary/5 transition-all rounded-lg"
+                    href="seller_account.html">
+                    <span class="material-symbols-outlined">person</span>
+                    Profile Settings
+                </a>
+            </li>
+            <li class="mt-auto pt-4 border-t border-white/20">
+                <a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error/5 transition-all rounded-lg"
+                    href="login.html" onclick="localStorage.removeItem('userLoggedIn')">
+                    <span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- TopAppBar -->
+    <header id="top-bar"
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-white/60 dark:bg-surface/40 backdrop-blur-[25px] border-b border-white/30 dark:border-white/10 shadow-[0_40px_40px_rgba(0,109,54,0.05)]">
+        <button onclick="goBack()"
+            class="text-secondary dark:text-secondary-fixed hover:opacity-80 transition-opacity flex items-center justify-center w-10 h-10 rounded-full bg-white/40 shadow-sm border border-white/40">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </button>
+        <h1 class="font-h2 text-h2 font-bold tracking-tight text-on-surface dark:text-surface-bright">Budakattu-Sante
+        </h1>
+        <div class="w-10 h-10"></div> <!-- spacing balance -->
+    </header>
+
+    <main class="max-w-4xl mx-auto px-container-margin">
+        <div class="mb-8 flex justify-between items-end">
+            <div>
+                <h2 class="font-h1 text-h1 text-on-surface mb-2">Notifications</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">Stay updated with your forest journey.</p>
+            </div>
+            <button onclick="markAllAsRead()"
+                class="font-label-caps text-label-caps text-secondary hover:opacity-80 transition-opacity flex items-center gap-1 bg-secondary/5 border border-secondary/10 px-4 py-2 rounded-full shadow-sm">
+                <span class="material-symbols-outlined text-[18px]">done_all</span> Mark all read
+            </button>
+        </div>
+
+        <div class="space-y-6">
+            <!-- Category: Order Updates -->
+            <div class="mb-8">
+                <h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 px-2">Order Updates</h3>
+                <div
+                    class="glass-card rounded-xl p-card-padding flex gap-4 items-start relative hover:opacity-90 transition-opacity cursor-pointer group mb-4">
+                    <div id="unread-dot"
+                        class="absolute w-2 h-2 rounded-full bg-tertiary-fixed-dim top-6 right-6 shadow-[0_0_8px_rgba(233,196,0,0.6)] animate-pulse">
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-tertiary-fixed/20 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-on-tertiary-container icon-glow-gold"
+                            style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="font-body-lg text-body-lg font-semibold text-on-surface">Shipment Dispatched</h4>
+                            <span class="font-label-caps text-label-caps text-on-surface-variant">2h ago</span>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-3">Your order of Wild Forest
+                            Honey and Bamboo Crafts has left the origin center.</p>
+                        <div
+                            class="inline-flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full border border-white/40">
+                            <span class="font-label-caps text-label-caps text-primary">Track ID:</span>
+                            <span class="font-label-caps text-label-caps text-on-surface">TRK-9824-FRST</span>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="glass-card rounded-xl p-card-padding flex gap-4 items-start relative hover:opacity-90 transition-opacity cursor-pointer group opacity-75">
+                    <div
+                        class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-on-secondary-container icon-glow-emerald"
+                            style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="font-body-lg text-body-lg font-semibold text-on-surface">Order Delivered</h4>
+                            <span class="font-label-caps text-label-caps text-on-surface-variant">Yesterday</span>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Your previous order has been
+                            delivered. How was your experience?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category: Tribal Stories -->
+            <div class="mb-8">
+                <h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 px-2">Tribal Stories</h3>
+                <div
+                    class="glass-card rounded-xl p-card-padding flex gap-4 items-start relative hover:opacity-90 transition-opacity cursor-pointer group">
+                    <div id="unread-dot-2"
+                        class="absolute w-2 h-2 rounded-full bg-tertiary-fixed-dim top-6 right-6 shadow-[0_0_8px_rgba(233,196,0,0.6)] animate-pulse">
+                    </div>
+                    <div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative">
+                        <div class="absolute inset-0 bg-black/10 z-10"></div>
+                        <img class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwGig2fl4MuQ551aH-aFaJFGY6K5q2hBYQ8BBJVLQSaEW8L2OdNyFuQJO-aVWvmhB7B8ZQKm4jXByN1VZbqvNuoFOxqrp5PYcvVgtxHqZzu1h2rM629THUxkybgUSFZhD9VudcZF9fvdf8EpstIAtb1eT74vFlSea8AQ0Bg229JxePxQtJIFtzdW_1OIfDb6Jmce5_XPJcDgxxfy6J8aQBVlAMPu70CgPlF8x6FSIts9wJ_eOTJhkYqSPMP6wXD5FzW0ELhdX_7YAF" />
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="font-body-lg text-body-lg font-semibold text-on-surface">New Artisan Story</h4>
+                            <span class="font-label-caps text-label-caps text-on-surface-variant">5h ago</span>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-2">Read the journey of master
+                            weaver Kamali from the Nilgiri slopes.</p>
+                        <span class="inline-flex items-center gap-1 font-label-caps text-label-caps text-secondary">
+                            Read Story <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category: System Alerts -->
+            <div>
+                <h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 px-2">System Alerts</h3>
+                <div
+                    class="glass-card rounded-xl p-card-padding flex gap-4 items-start relative hover:opacity-90 transition-opacity cursor-pointer group opacity-75">
+                    <div
+                        class="w-12 h-12 rounded-full bg-surface-container-highest/50 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-primary icon-glow-blue">cloud_sync</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <h4 class="font-body-lg text-body-lg font-semibold text-on-surface">Traceability Synced</h4>
+                            <span class="font-label-caps text-label-caps text-on-surface-variant">Oct 12</span>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant">Your impact ledger and supply chain
+                            records have been successfully updated on the blockchain.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- BottomNavBar -->
+    <nav id="bottom-bar" class="fixed bottom-0 left-0 w-full z-50 flex justify-center pb-8 px-6 md:hidden">
+        <!-- Will be dynamically updated based on role -->
+    </nav>
+
+    <script>
+        function goBack() {
+            if (localStorage.getItem('userRole') === 'seller' || window.location.hash === '#seller' || document.referrer.includes('seller')) {
+                window.location.href = 'seller_dashboard.html';
+            } else {
+                window.location.href = 'discover.html';
+            }
+        }
+
+        function markAllAsRead() {
+            const dot1 = document.getElementById('unread-dot');
+            const dot2 = document.getElementById('unread-dot-2');
+            if (dot1) dot1.remove();
+            if (dot2) dot2.remove();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Self-healing role check from hash or referrer
+            if (window.location.hash === '#seller' || document.referrer.includes('seller')) {
+                localStorage.setItem('userRole', 'seller');
+            }
+
+            const userRole = localStorage.getItem('userRole') || 'buyer';
+            const bottomBar = document.getElementById('bottom-bar');
+
+            if (userRole === 'seller') {
+                // Setup Seller View spacing
+                document.getElementById('notifications-body').classList.add('md:pl-80');
+                document.getElementById('seller-sidebar').classList.add('md:flex');
+                document.getElementById('top-bar').classList.add('md:pl-[344px]');
+
+                // Build Seller Bottom Nav
+                bottomBar.innerHTML = `
+                    <div class="flex items-center justify-between w-full max-w-md mx-auto rounded-full bg-white/60 dark:bg-surface/40 backdrop-blur-[25px] border border-white/40 dark:border-white/10 shadow-[0_40px_40px_rgba(0,0,0,0.08)] p-2">
+                        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors flex-1" href="seller_discover.html">
+                            <span class="material-symbols-outlined text-[24px]">explore</span>
+                            <span class="font-label-caps text-[10px] font-semibold mt-1">Discover</span>
+                        </a>
+                        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors flex-1" href="seller_dashboard.html">
+                            <span class="material-symbols-outlined text-[24px]">dashboard</span>
+                            <span class="font-label-caps text-[10px] font-semibold mt-1">Dashboard</span>
+                        </a>
+                        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors flex-1" href="origin.html">
+                            <span class="material-symbols-outlined text-[24px]">nature_people</span>
+                            <span class="font-label-caps text-[10px] font-semibold mt-1">Origin</span>
+                        </a>
+                        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors flex-1" href="seller_account.html">
+                            <span class="material-symbols-outlined text-[24px]">person</span>
+                            <span class="font-label-caps text-[10px] font-semibold mt-1">Account</span>
+                        </a>
+                    </div>
+                `;
+            } else {
+                // Build Buyer Bottom Nav
+                bottomBar.innerHTML = `
+                    <div class="flex items-center justify-between w-full max-w-md mx-auto rounded-full bg-white/60 dark:bg-surface/40 backdrop-blur-[25px] border border-white/40 dark:border-white/10 shadow-[0_40px_40px_rgba(0,0,0,0.08)] p-2">
+                        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors flex-1" href="discover.html">
+                            <span class="material-symbols-outlined text-[24px]">explore</span>
+                            <span class="font-label-caps text-[10px] font-semibold mt-1">Discover</span>
+                        </a>
+                        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors flex-1" href="origin.html">
+                            <span class="material-symbols-outlined text-[24px]">nature_people</span>
+                            <span class="font-label-caps text-[10px] font-semibold mt-1">Origin</span>
+                        </a>
+                        <a class="flex flex-col items-center justify-center bg-secondary/10 dark:bg-secondary-container/20 text-secondary dark:text-secondary-fixed rounded-full px-4 py-2 scale-90 transition-all duration-300 flex-1 active-glow" href="notifications.html">
+                            <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">notifications</span>
+                            <span class="font-label-caps text-[10px] font-bold mt-1">Alerts</span>
+                        </a>
+                        <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors flex-1" href="account.html">
+                            <span class="material-symbols-outlined text-[24px]">person</span>
+                            <span class="font-label-caps text-[10px] font-semibold mt-1">Account</span>
+                        </a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Budakattu-Sante - Login</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700&amp;family=Manrope:wght@400&amp;family=Space+Grotesk:wght@500;600&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#ffffff",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "surface": "transparent",
+                        "on-primary-fixed": "#1a1c1c",
+                        "tertiary": "#705d00",
+                        "on-tertiary-fixed": "#221b00",
+                        "on-secondary-fixed": "#00210c",
+                        "surface-container-high": "transparent",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#00743a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#ffffff",
+                        "inverse-on-surface": "transparent",
+                        "outline": "#747878",
+                        "on-background": "#161c22",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "transparent",
+                        "on-primary-fixed-variant": "#454747",
+                        "primary": "#5d5f5f",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#8b7400",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#5d5f5f",
+                        "secondary": "#006d36",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "secondary-container": "#83fba5",
+                        "primary-fixed": "#e2e2e2",
+                        "outline-variant": "#c4c7c8",
+                        "tertiary-fixed": "#ffe16d",
+                        "surface-container": "transparent",
+                        "on-surface": "#161c22",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "transparent",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#444748",
+                        "surface-bright": "transparent",
+                        "secondary-fixed": "#83fba5",
+                        "on-primary-container": "#747676",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "section-gap": "48px",
+                        "container-margin": "24px",
+                        "card-padding": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "h2": ["Epilogue"],
+                        "price-display": ["Space Grotesk"],
+                        "body-lg": ["Manrope"],
+                        "h1": ["Epilogue"],
+                        "label-caps": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h2": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "price-display": ["24px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html, body { background-color: #ffffff !important; background: #ffffff !important; }
+
+        body {
+            min-height: 100dvh;
+        }
+
+        /* Entry & State Animations */
+        @keyframes subtleScaleUp {
+            0% { transform: scale(0.96) translateY(15px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        @keyframes floatAurora {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        .animate-scale-up {
+            animation: subtleScaleUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-aurora-1 {
+            animation: floatAurora 8s ease-in-out infinite;
+        }
+        .animate-aurora-2 {
+            animation: floatAurora 10s ease-in-out infinite 1s;
+        }
+
+        /* Custom Input Autofill Overrides & Focus State */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+            -webkit-text-fill-color: #161c22 !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    </style>
+    <script src="i18n.js" defer></script>    <script src="device-lock.js" defer></script>
+</head>
+<body class="bg-background min-h-screen relative overflow-x-hidden flex flex-col font-body-md text-on-surface select-none">
+    <!-- Ambient Background / Aurora Effect -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-secondary-fixed-dim/20 blur-[100px] opacity-70 animate-aurora-1"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-tertiary-fixed-dim/10 blur-[120px] opacity-60 animate-aurora-2"></div>
+    </div>
+
+    <!-- Language Toggle (Top Right) -->
+    <header class="relative z-10 w-full px-container-margin py-6 flex justify-end">
+        <div id="lang-toggle" class="flex items-center gap-2 bg-white/60 backdrop-blur-[25px] border border-white/30 rounded-full px-4 py-2 shadow-[0_10px_20px_rgba(0,109,54,0.02)]">
+            <span id="lang-en" class="font-label-caps text-label-caps text-secondary font-bold cursor-pointer transition-all">EN</span>
+            <div class="w-px h-4 bg-outline-variant"></div>
+            <span id="lang-kn" class="font-label-caps text-label-caps text-on-surface-variant cursor-pointer hover:text-secondary transition-all">ಕನ್ನಡ</span>
+        </div>
+    </header>
+
+    <!-- Main Content Canvas (Sized to support beautiful Side-by-Side on wider screens and clean stack on mobile) -->
+    <main class="relative z-10 flex-grow flex items-center justify-center px-container-margin py-8 w-full max-w-[850px] mx-auto">
+        <div class="w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 animate-scale-up">
+            
+            <!-- Glassmorphism Login Card (Left Panel) -->
+            <div class="w-full max-w-[460px] bg-white/60 backdrop-blur-[25px] border border-white/30 rounded-[2rem] p-[30px] md:p-[40px] shadow-[0_40px_80px_rgba(0,109,54,0.05)] relative overflow-hidden">
+                <!-- Inner Glow -->
+                <div class="absolute inset-0 border-[0.5px] border-white/50 rounded-[2rem] pointer-events-none"></div>
+                
+                <!-- Brand Logo / Headline -->
+                <div class="text-center mb-8 flex flex-col items-center justify-center">
+                    <img src="app_icon.png" alt="Budakattu Sante Logo" class="w-20 h-20 rounded-2xl mb-3 shadow-[0_8px_20px_rgba(0,109,54,0.1)]"/>
+                    <h1 class="font-h1 text-[32px] md:text-h1 text-on-surface mb-2 tracking-tight">Budakattu-Sante</h1>
+                    <p id="brand-tagline" class="font-body-md text-body-md text-on-surface-variant">Connecting the Forest to your Home</p>
+                </div>
+
+                <!-- Role Switch Tab -->
+                <div class="flex bg-surface-container-low p-1 rounded-full mb-6">
+                    <button type="button" id="role-buyer" onclick="setRole('buyer')" class="flex-1 py-2 rounded-full font-label-caps text-[11px] font-bold text-white bg-secondary transition-all">Buyer</button>
+                    <button type="button" id="role-seller" onclick="setRole('seller')" class="flex-1 py-2 rounded-full font-label-caps text-[11px] font-semibold text-on-surface-variant hover:text-secondary transition-all">Tribal Seller</button>
+                </div>
+
+                <!-- Authentication Form -->
+                <form id="login-form" class="space-y-6" onsubmit="event.preventDefault();">
+                    <!-- Email Address Input -->
+                    <div>
+                        <label id="lbl-email" class="block font-label-caps text-label-caps text-on-surface-variant mb-1 ml-1" for="email">Email Address</label>
+                        <div class="relative flex items-center bg-transparent border-b border-outline-variant focus-within:border-secondary transition-all">
+                            <span class="material-symbols-outlined text-on-surface-variant ml-1">mail</span>
+                            <input class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-on-surface py-3 px-3 placeholder:text-outline" id="email" placeholder="example@forest.com" type="email" required/>
+                        </div>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div>
+                        <label id="lbl-password" class="block font-label-caps text-label-caps text-on-surface-variant mb-1 ml-1" for="password">Password</label>
+                        <div class="relative flex items-center bg-transparent border-b border-outline-variant focus-within:border-secondary transition-all">
+                            <span class="material-symbols-outlined text-on-surface-variant ml-1">lock</span>
+                            <input class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-on-surface py-3 px-3 placeholder:text-outline" id="password" placeholder="••••••••" type="password" required/>
+                            <button type="button" id="btn-toggle-password" class="mr-1 text-on-surface-variant hover:text-secondary transition-colors">
+                                <span class="material-symbols-outlined text-xl" id="pwd-icon">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex items-center justify-between text-body-md px-1">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" class="rounded border-outline-variant text-secondary focus:ring-secondary/20 bg-white/50 w-4 h-4"/>
+                            <span id="txt-remember" class="text-on-surface-variant text-sm">Remember me</span>
+                        </label>
+                        <a href="#" id="txt-forgot" class="text-secondary hover:underline text-sm font-semibold">Forgot Password?</a>
+                    </div>
+
+                    <!-- Primary Action Button (Sign In Gradient to match Screenshot) -->
+                    <button type="submit" id="btn-signin" class="w-full py-4 rounded-full bg-gradient-to-r from-secondary to-secondary-container text-white font-label-caps text-label-caps shadow-[0_10px_20px_rgba(0,109,54,0.15)] hover:opacity-90 active:scale-[0.99] transition-all flex items-center justify-center gap-2 relative overflow-hidden group">
+                        <span id="txt-signin" class="relative z-10 font-bold">Sign In</span>
+                        <span class="material-symbols-outlined relative z-10 font-bold">arrow_forward</span>
+                        <!-- Inner Shine -->
+                        <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    </button>
+
+                    <!-- Divider -->
+                    <div class="flex items-center gap-4 my-4">
+                        <div class="h-px bg-outline-variant flex-1"></div>
+                        <span class="font-label-caps text-label-caps text-outline">OR</span>
+                        <div class="h-px bg-outline-variant flex-1"></div>
+                    </div>
+
+                    <!-- Google Login Button (With centered logo box like Screenshot) -->
+                    <button type="button" id="btn-google-login" class="w-full py-3 rounded-full bg-transparent border border-white/50 text-on-surface font-label-caps text-label-caps flex items-center justify-center gap-3 hover:bg-white/40 active:scale-[0.99] transition-all shadow-sm">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.22-.67-.35-1.37-.35-2.09z" fill="#FBBC05"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                        </svg>
+                        <span id="txt-google">Continue with Google</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Registration Paths (Right Panel - Side-by-Side on Desktop, beautiful flow on Mobile) -->
+            <div class="w-full max-w-[280px] flex flex-col items-center md:items-start text-center md:text-left gap-4 p-4">
+                <p id="txt-new-market" class="font-body-md text-body-md font-semibold text-on-surface-variant md:ml-1">New to the marketplace?</p>
+                <div class="flex flex-row md:flex-col gap-4 w-full justify-center md:justify-start">
+                    
+                    <!-- Tribal Seller Button (Matching layout from screenshot) -->
+                    <button type="button" id="btn-signup-seller" class="w-28 md:w-full py-4 px-3 rounded-xl bg-white/40 backdrop-blur-[20px] text-on-surface font-label-caps text-label-caps border border-white/40 hover:bg-white/60 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_8px_16px_rgba(0,109,54,0.02)] flex flex-col items-center gap-2">
+                        <div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-[24px]">nature_people</span>
+                        </div>
+                        <span id="txt-seller" class="text-xs font-bold leading-none tracking-tight">Tribal Seller</span>
+                    </button>
+
+                    <!-- Buyer Button (Matching layout from screenshot) -->
+                    <button type="button" id="btn-signup-buyer" class="w-28 md:w-full py-4 px-3 rounded-xl bg-white/40 backdrop-blur-[20px] text-on-surface font-label-caps text-label-caps border border-white/40 hover:bg-white/60 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_8px_16px_rgba(0,109,54,0.02)] flex flex-col items-center gap-2">
+                        <div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+                        </div>
+                        <span id="txt-buyer" class="text-xs font-bold leading-none tracking-tight">Buyer</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Custom success modal for feedback -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl transform scale-95 transition-transform duration-300">
+            <div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h2 id="modal-title" class="font-h2 text-h2 text-on-surface mb-2">Welcome Back!</h2>
+            <p id="modal-body" class="font-body-md text-body-md text-on-surface-variant mb-6">Successfully authenticated. Connecting you to the marketplace.</p>
+            <button onclick="closeModal()" class="w-full py-3 bg-secondary text-white font-label-caps text-label-caps rounded-full shadow-lg shadow-secondary/20 hover:bg-secondary/90 transition-all">
+                Proceed to Home
+            </button>
+        </div>
+    </div>
+
+    <!-- Error Feedback Modal -->
+    <div id="error-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl transform scale-95 transition-transform duration-300">
+            <div class="w-16 h-16 bg-error/10 text-error rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="material-symbols-outlined text-4xl">error</span>
+            </div>
+            <h2 id="error-modal-title" class="font-h2 text-h2 text-on-surface mb-2">Validation Error</h2>
+            <p id="error-modal-body" class="font-body-md text-body-md text-on-surface-variant mb-6">Please correct the highlighted fields before proceeding.</p>
+            <button onclick="closeErrorModal()" class="w-full py-3 bg-error text-white font-label-caps text-label-caps rounded-full shadow-lg shadow-error/20 hover:bg-error/90 transition-all">
+                Try Again
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Language localization data
+        const langData = {
+            en: {
+                tagline: "Connecting the Forest to your Home",
+                lblEmail: "Email Address",
+                lblPassword: "Password",
+                remember: "Remember me",
+                forgot: "Forgot Password?",
+                btnSignin: "Sign In",
+                btnGoogle: "Continue with Google",
+                newMarket: "New to the marketplace?",
+                seller: "Tribal Seller",
+                buyer: "Buyer",
+                modalTitle: "Welcome Back!",
+                modalBody: "Successfully authenticated. Connecting you to the marketplace."
+            },
+            kn: {
+                tagline: "ಕಾಡಿನ ಉತ್ಪನ್ನಗಳು ನೇರವಾಗಿ ನಿಮ್ಮ ಮನೆಗೆ",
+                lblEmail: "ಇಮೇಲ್ ವಿಳಾಸ",
+                lblPassword: "ಗುಪ್ತಪದ",
+                remember: "ನನ್ನನ್ನು ನೆನಪಿಡು",
+                forgot: "ಪಾಸ್ವರ್ಡ್ ಮರೆತಿರಾ?",
+                btnSignin: "ಸೈನ್ ಇನ್",
+                btnGoogle: "ಗೂಗಲ್ ಮೂಲಕ ಮುಂದುವರಿಯಿರಿ",
+                newMarket: "ಮಾರುಕಟ್ಟೆಗೆ ಹೊಸಬರೇ?",
+                seller: "ಬುಡಕಟ್ಟು ಮಾರಾಟಗಾರ",
+                buyer: "ಖರೀದಿದಾರ",
+                modalTitle: "ಸುಸ್ವಾಗತ!",
+                modalBody: "ಯಶಸ್ವಿಯಾಗಿ ಲಾಗ್ ಇನ್ ಆಗಿದ್ದೀರಿ. ಮಾರುಕಟ್ಟೆಗೆ ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ."
+            }
+        };
+
+        // Lang toggling
+        const enToggle = document.getElementById('lang-en');
+        const knToggle = document.getElementById('lang-kn');
+        let currentLang = 'en';
+        
+        enToggle.addEventListener('click', () => setLanguage('en'));
+        knToggle.addEventListener('click', () => setLanguage('kn'));
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            if (lang === 'en') {
+                enToggle.className = 'font-label-caps text-label-caps text-secondary font-bold cursor-pointer';
+                knToggle.className = 'font-label-caps text-label-caps text-on-surface-variant cursor-pointer hover:text-secondary';
+            } else {
+                knToggle.className = 'font-label-caps text-label-caps text-secondary font-bold cursor-pointer';
+                enToggle.className = 'font-label-caps text-label-caps text-on-surface-variant cursor-pointer hover:text-secondary';
+            }
+
+            document.getElementById('brand-tagline').innerText = langData[lang].tagline;
+            document.getElementById('lbl-email').innerText = langData[lang].lblEmail;
+            document.getElementById('lbl-password').innerText = langData[lang].lblPassword;
+            document.getElementById('txt-remember').innerText = langData[lang].remember;
+            document.getElementById('txt-forgot').innerText = langData[lang].forgot;
+            document.getElementById('txt-signin').innerText = langData[lang].btnSignin;
+            document.getElementById('txt-google').innerText = langData[lang].btnGoogle;
+            document.getElementById('txt-new-market').innerText = langData[lang].newMarket;
+            document.getElementById('txt-seller').innerText = langData[lang].seller;
+            document.getElementById('txt-buyer').innerText = langData[lang].buyer;
+            document.getElementById('modal-title').innerText = langData[lang].modalTitle;
+            document.getElementById('modal-body').innerText = langData[lang].modalBody;
+        }
+
+        // Toggle Password visibility
+        const passwordInput = document.getElementById('password');
+        const togglePasswordBtn = document.getElementById('btn-toggle-password');
+        const pwdIcon = document.getElementById('pwd-icon');
+
+        togglePasswordBtn.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            pwdIcon.innerText = type === 'password' ? 'visibility' : 'visibility_off';
+        });
+
+        // Form Submission
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('email').value.toLowerCase().trim();
+            const passwordInput = document.getElementById('password').value;
+            
+            // Validation 1: Email pattern validation (RFC standard regex)
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailInput)) {
+                showErrorModal(currentLang === 'en' ? "Please enter a valid email address (e.g., name@example.com)." : "ದಯವಿಟ್ಟು ಮಾನ್ಯವಾದ ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ (ಉದಾಹರಣೆಗೆ, name@example.com).");
+                return;
+            }
+
+            // Validation 2: Password strength validation (min 6 characters)
+            if (passwordInput.length < 6) {
+                showErrorModal(currentLang === 'en' ? "Password must be at least 6 characters long." : "ಪಾಸ್‌ವರ್ಡ್ ಕನಿಷ್ಠ 6 ಅಕ್ಷರಗಳಿರಬೇಕು.");
+                return;
+            }
+
+            const savedEmail = localStorage.getItem('userEmail');
+            const savedPassword = localStorage.getItem('userPassword');
+            
+            if (!savedEmail) {
+                showErrorModal(currentLang === 'en' ? "No registered account found. Please sign up first as a Buyer or Tribal Seller using the options below!" : "ಯಾವುದೇ ನೋಂದಾಯಿತ ಖಾತೆ ಕಂಡುಬಂದಿಲ್ಲ. ಕೆಳಗಿನ ಆಯ್ಕೆಗಳನ್ನು ಬಳಸಿ ಮೊದಲು ಖರೀದಿದಾರ ಅಥವಾ ಬುಡಕಟ್ಟು ಮಾರಾಟಗಾರರಾಗಿ ಸೈನ್ ಅಪ್ ಮಾಡಿ!");
+                return;
+            }
+            
+            if (emailInput !== savedEmail) {
+                showErrorModal(currentLang === 'en' ? "Account not found. Please verify your email or sign up first!" : "ಖಾತೆ ಕಂಡುಬಂದಿಲ್ಲ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಇಮೇಲ್ ಅನ್ನು ಪರಿಶೀಲಿಸಿ ಅಥವಾ ಮೊದಲು ಸೈನ್ ಅಪ್ ಮಾಡಿ!");
+                return;
+            }
+            
+            if (passwordInput !== savedPassword) {
+                showErrorModal(currentLang === 'en' ? "Incorrect password. Please try again!" : "ತಪ್ಪು ಪಾಸ್‌ವರ್ಡ್. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ!");
+                return;
+            }
+            
+            // Login matches! Sync userRole to the explicitly selected role from the tab
+            localStorage.setItem('userRole', selectedRole);
+            showSuccessModal();
+        });
+
+        // Google sign-in trigger
+        document.getElementById('btn-google-login').addEventListener('click', () => {
+            // Check if google user already exists, else create default
+            if (!localStorage.getItem('userEmail')) {
+                localStorage.setItem('userFullName', 'Google Eco Trader');
+                localStorage.setItem('userEmail', 'google@forest.com');
+                localStorage.setItem('userPassword', 'google123');
+                localStorage.setItem('userForest', selectedRole === 'seller' ? 'Nilgiris Co-op' : '');
+                localStorage.setItem('userProduce', selectedRole === 'seller' ? 'Raw Honey' : '');
+                localStorage.setItem('userAddress', selectedRole === 'seller' ? 'Nilgiris Biosphere' : 'Bangalore');
+                localStorage.setItem('userDelivery', 'eco');
+            }
+            localStorage.setItem('userRole', selectedRole);
+            showSuccessModal();
+        });
+
+        // Redirects to the new signup page
+        document.getElementById('btn-signup-seller').addEventListener('click', () => {
+            window.location.href = 'signup.html?role=seller';
+        });
+        document.getElementById('btn-signup-buyer').addEventListener('click', () => {
+            window.location.href = 'signup.html?role=buyer';
+        });
+
+        // Toggle Role logic
+        let selectedRole = 'buyer';
+
+        function setRole(role) {
+            selectedRole = role;
+            const buyerBtn = document.getElementById('role-buyer');
+            const sellerBtn = document.getElementById('role-seller');
+            
+            if (role === 'buyer') {
+                buyerBtn.className = 'flex-1 py-2 rounded-full font-label-caps text-[11px] font-bold text-white bg-secondary transition-all';
+                sellerBtn.className = 'flex-1 py-2 rounded-full font-label-caps text-[11px] font-semibold text-on-surface-variant hover:text-secondary transition-all';
+            } else {
+                sellerBtn.className = 'flex-1 py-2 rounded-full font-label-caps text-[11px] font-bold text-white bg-secondary transition-all';
+                buyerBtn.className = 'flex-1 py-2 rounded-full font-label-caps text-[11px] font-semibold text-on-surface-variant hover:text-secondary transition-all';
+            }
+        }
+
+        // Check for role query parameter from signup or outer links
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('role') === 'seller') {
+                setRole('seller');
+            }
+        });
+
+        function showSuccessModal() {
+            const modal = document.getElementById('success-modal');
+            const card = modal.querySelector('div');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            }, 50);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('success-modal');
+            const card = modal.querySelector('div');
+            
+            modal.classList.remove('opacity-100');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                localStorage.setItem('userLoggedIn', 'true');
+                const userRole = localStorage.getItem('userRole') || selectedRole;
+                if (userRole === 'seller') {
+                    window.location.href = 'seller_dashboard.html';
+                } else {
+                    window.location.href = 'discover.html';
+                }
+            }, 300);
+        }
+
+        function showErrorModal(message) {
+            const modal = document.getElementById('error-modal');
+            const card = modal.querySelector('div');
+            document.getElementById('error-modal-body').innerText = message;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            }, 50);
+        }
+
+        function closeErrorModal() {
+            const modal = document.getElementById('error-modal');
+            const card = modal.querySelector('div');
+            
+            modal.classList.remove('opacity-100');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
+
+

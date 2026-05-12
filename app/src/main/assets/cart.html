@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>My Cart - Budakattu-Sante</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@600;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#ffffff",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "surface": "transparent",
+                        "on-primary-fixed": "#1a1c1c",
+                        "tertiary": "#705d00",
+                        "on-tertiary-fixed": "#221b00",
+                        "on-secondary-fixed": "#00210c",
+                        "surface-container-high": "transparent",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#00743a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#ffffff",
+                        "inverse-on-surface": "transparent",
+                        "outline": "#747878",
+                        "on-background": "#161c22",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "transparent",
+                        "on-primary-fixed-variant": "#454747",
+                        "primary": "#5d5f5f",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#8b7400",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#5d5f5f",
+                        "secondary": "#006d36",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "secondary-container": "#83fba5",
+                        "primary-fixed": "#e2e2e2",
+                        "outline-variant": "#c4c7c8",
+                        "tertiary-fixed": "#ffe16d",
+                        "surface-container": "transparent",
+                        "on-surface": "#161c22",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "transparent",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#444748",
+                        "surface-bright": "transparent",
+                        "secondary-fixed": "#83fba5",
+                        "on-primary-container": "#747676",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "section-gap": "48px",
+                        "container-margin": "24px",
+                        "card-padding": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "h2": ["Epilogue"],
+                        "price-display": ["Space Grotesk"],
+                        "body-lg": ["Manrope"],
+                        "h1": ["Epilogue"],
+                        "label-caps": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h2": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "price-display": ["24px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html,
+        body {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 40px 40px rgba(0, 109, 54, 0.05);
+        }
+
+        .active-glow {
+            box-shadow: 0 0 20px rgba(0, 109, 54, 0.25);
+        }
+
+        html,
+        body {
+            height: 100% !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-30px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti-sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: confettiFall 2s ease-out infinite;
+            z-index: 20;
+        }
+    </style>
+    <script src="i18n.js" defer></script>
+    <script src="device-lock.js" defer></script>
+</head>
+
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden">
+
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-white/60 backdrop-blur-[25px] border-b border-white/30 shadow-[0_40px_40px_rgba(0,109,54,0.05)]">
+        <a href="discover.html"
+            class="text-secondary hover:scale-105 active:scale-95 transition-all flex items-center justify-center w-10 h-10 rounded-full hover:bg-secondary/10">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <div class="font-h2 text-[20px] font-bold tracking-tight text-on-surface absolute left-1/2 -translate-x-1/2"
+            data-i18n="My Shopping Cart">
+            My Shopping Cart
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="clearCart()"
+                class="text-on-surface-variant hover:text-error hover:scale-105 active:scale-95 transition-all flex items-center justify-center w-10 h-10 rounded-full hover:bg-error/10">
+                <span class="material-symbols-outlined">delete_sweep</span>
+            </button>
+            <div id="lang-target" class="w-10 h-10 flex items-center justify-center"></div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main
+        class="flex-1 overflow-y-auto pt-24 pb-32 px-container-margin max-w-2xl mx-auto space-y-6 w-full hide-scrollbar"
+        style="-webkit-overflow-scrolling: touch !important;">
+
+        <!-- Cart Items List Container -->
+        <section id="cart-list" class="space-y-4">
+            <!-- Dynamic Cart Items Rendered Here -->
+        </section>
+
+        <!-- Sourcing Impact Breakdown Section -->
+        <section id="pricing-summary-card"
+            class="glass-card rounded-[28px] p-card-padding space-y-4 hidden transition-all duration-300">
+            <h3
+                class="font-h2 text-h2 text-[18px] text-on-surface font-bold pb-2 border-b border-outline-variant/30 flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">verified_user</span>
+                Sourcing Livelihood Impact
+            </h3>
+
+            <div class="space-y-3 font-body-md text-sm">
+                <div class="flex justify-between items-center text-on-surface-variant">
+                    <span>Products Subtotal</span>
+                    <span id="subtotal-display"
+                        class="font-price-display font-medium text-base text-on-surface">₹0</span>
+                </div>
+
+                <!-- Direct Tribal Benefit Indicator -->
+                <div
+                    class="flex justify-between items-center p-3 bg-secondary/10 rounded-xl border border-secondary/20 text-secondary">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-base">diversity_3</span>
+                        <span class="font-semibold text-xs">Tribal Artisan Premium (10%)</span>
+                    </div>
+                    <span id="premium-display" class="font-price-display font-bold text-xs">+ ₹0</span>
+                </div>
+
+                <div class="flex justify-between items-center text-on-surface-variant">
+                    <span>Eco-friendly Shipping</span>
+                    <span id="shipping-display"
+                        class="font-price-display font-medium text-base text-on-surface">₹40</span>
+                </div>
+
+                <div class="pt-3 border-t border-dashed border-outline-variant/40 flex justify-between items-center">
+                    <span class="font-bold text-base text-on-surface">Total Fair Price</span>
+                    <span id="total-display" class="font-price-display font-bold text-[22px] text-secondary">₹0</span>
+                </div>
+            </div>
+
+            <!-- Proceed Button -->
+            <button onclick="proceedToCheckout()"
+                class="w-full mt-4 py-4 rounded-full bg-secondary text-on-secondary font-semibold text-center hover:opacity-95 active:scale-98 transition-all shadow-[0_10px_25px_rgba(0,109,54,0.2)] flex items-center justify-center gap-2 relative overflow-hidden group">
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
+                </div>
+                <span class="material-symbols-outlined">shopping_cart_checkout</span>
+                Proceed to Checkout
+            </button>
+        </section>
+
+        <!-- Empty Cart State Screen -->
+        <section id="empty-cart-view"
+            class="glass-card rounded-[32px] p-8 text-center border border-white flex flex-col items-center gap-6 shadow-2xl py-12">
+            <div
+                class="w-20 h-20 bg-secondary/10 text-secondary rounded-full flex items-center justify-center shadow-inner">
+                <span class="material-symbols-outlined text-[44px] font-bold">shopping_basket</span>
+            </div>
+            <div>
+                <h3 class="font-h2 text-[22px] font-bold text-on-surface mb-2">Your Cart is Empty</h3>
+                <p class="font-body-md text-on-surface-variant text-sm max-w-xs mx-auto">Explore authentic tribal forest
+                    products to support rural cooperative communities.</p>
+            </div>
+            <a href="discover.html"
+                class="px-8 py-3.5 rounded-full bg-secondary text-on-secondary font-semibold text-sm shadow-md hover:opacity-90 active:scale-95 transition-all flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">explore</span>
+                Discover Products
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Multi-Step Checkout Modal -->
+    <div id="checkout-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden transition-all duration-300 overflow-y-auto">
+        <div class="bg-white max-w-md w-full rounded-[32px] p-6 md:p-8 border border-white shadow-[0_40px_80px_rgba(0,0,0,0.15)] flex flex-col gap-6 scale-95 opacity-0 transition-all duration-300 transform"
+            id="modal-container">
+
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-surface-dim/30 pb-4">
+                <div class="flex flex-col">
+                    <span id="step-indicator"
+                        class="font-label-caps text-[10px] text-secondary font-bold uppercase tracking-wider">Step 1 of
+                        4: Customer Details</span>
+                    <h3 id="step-title" class="font-h2 text-lg font-bold text-on-surface">Shipping & Delivery</h3>
+                </div>
+                <button onclick="exitCheckoutFlow()"
+                    class="text-on-surface-variant hover:text-error w-8 h-8 rounded-full hover:bg-error/10 flex items-center justify-center transition-colors">
+                    <span class="material-symbols-outlined text-lg">close</span>
+                </button>
+            </div>
+
+            <!-- Step 1: Details Form -->
+            <div id="step-details" class="space-y-4">
+                <p class="font-body-md text-xs text-on-surface-variant">Please provide your contact and delivery address
+                    to complete your direct-from-tribe harvest purchase.</p>
+                <form id="details-form" class="space-y-4" onsubmit="event.preventDefault(); goToPaymentStep();">
+                    <div class="space-y-1">
+                        <label class="block font-label-caps text-[10px] text-on-surface-variant font-bold">Full
+                            Name</label>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant/70 text-[18px]">person</span>
+                            <input type="text" id="cust-name" required placeholder="e.g. Vishnu Kumar"
+                                class="w-full pl-10 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/10 font-body-md text-xs text-on-surface transition-all">
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-label-caps text-[10px] text-on-surface-variant font-bold">Email
+                            Address</label>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant/70 text-[18px]">mail</span>
+                            <input type="email" id="cust-email" required placeholder="e.g. vishnu@example.com"
+                                class="w-full pl-10 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/10 font-body-md text-xs text-on-surface transition-all">
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-label-caps text-[10px] text-on-surface-variant font-bold">Phone
+                            Number</label>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant/70 text-[18px]">phone</span>
+                            <input type="tel" id="cust-phone" required pattern="[0-9]{10}" placeholder="e.g. 9876543210"
+                                class="w-full pl-10 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/10 font-body-md text-xs text-on-surface transition-all">
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block font-label-caps text-[10px] text-on-surface-variant font-bold">Delivery
+                            Address</label>
+                        <div class="relative">
+                            <span
+                                class="material-symbols-outlined absolute left-3.5 top-3 text-on-surface-variant/70 text-[18px]">home_pin</span>
+                            <textarea id="cust-address" required rows="2"
+                                placeholder="Flat No, Street Name, City, Landmark, Pincode"
+                                class="w-full pl-10 pr-4 py-3 rounded-2xl bg-white border border-slate-200 focus:border-secondary focus:ring-2 focus:ring-secondary/10 font-body-md text-xs text-on-surface transition-all resize-none"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="w-full py-4 mt-2 rounded-full bg-secondary text-on-secondary font-semibold hover:opacity-95 active:scale-98 transition-all shadow-md flex items-center justify-center gap-2 text-xs">
+                        Select Payment Method
+                        <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Step 2: Payment Method Select -->
+            <div id="step-payment" class="space-y-4 hidden">
+                <p class="font-body-md text-xs text-on-surface-variant">Select your preferred secure payment method. All
+                    proceeds route directly to tribal cooperatives.</p>
+
+                <div class="space-y-2.5 max-h-[260px] overflow-y-auto pr-1">
+                    <!-- UPI -->
+                    <div onclick="selectPaymentMethod('upi')" id="opt-upi"
+                        class="border-2 border-secondary bg-secondary/5 rounded-2xl p-3 flex flex-col gap-2 cursor-pointer transition-all">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-secondary font-bold">qr_code_2</span>
+                                <div>
+                                    <h4 class="font-body-lg text-xs font-bold text-on-surface">UPI (GPay / PhonePe /
+                                        Paytm)</h4>
+                                    <p class="font-body-md text-[10px] text-on-surface-variant">Instant secure mobile
+                                        settlement</p>
+                                </div>
+                            </div>
+                            <input type="radio" id="radio-upi" name="pay-method" value="upi" checked
+                                class="text-secondary focus:ring-secondary">
+                        </div>
+                        <div id="upi-field" class="pt-1">
+                            <input type="text" id="upi-id" placeholder="Enter UPI ID (e.g. vishnu@okaxis)"
+                                class="w-full px-3 py-2 rounded-xl bg-surface border border-outline-variant/30 focus:border-secondary focus:ring-secondary text-xs">
+                        </div>
+                    </div>
+
+                    <!-- Credit/Debit Card -->
+                    <div onclick="selectPaymentMethod('card')" id="opt-card"
+                        class="border border-outline-variant/30 bg-surface/30 rounded-2xl p-3 flex flex-col gap-2 cursor-pointer transition-all">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+                                <div>
+                                    <h4 class="font-body-lg text-xs font-bold text-on-surface">Credit or Debit Card</h4>
+                                    <p class="font-body-md text-[10px] text-on-surface-variant">Visa, Mastercard, RuPay
+                                        cards</p>
+                                </div>
+                            </div>
+                            <input type="radio" id="radio-card" name="pay-method" value="card"
+                                class="text-secondary focus:ring-secondary">
+                        </div>
+                        <div id="card-fields" class="hidden pt-1 space-y-2">
+                            <input type="text" id="card-num" placeholder="Card Number (16 digits)"
+                                class="w-full px-3 py-2 rounded-xl bg-surface border border-outline-variant/30 focus:border-secondary focus:ring-secondary text-xs">
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="text" id="card-expiry" placeholder="MM/YY"
+                                    class="w-full px-3 py-2 rounded-xl bg-surface border border-outline-variant/30 focus:border-secondary focus:ring-secondary text-xs">
+                                <input type="password" id="card-cvv" placeholder="CVV"
+                                    class="w-full px-3 py-2 rounded-xl bg-surface border border-outline-variant/30 focus:border-secondary focus:ring-secondary text-xs">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Net Banking -->
+                    <div onclick="selectPaymentMethod('netbanking')" id="opt-netbanking"
+                        class="border border-outline-variant/30 bg-surface/30 rounded-2xl p-3 flex flex-col gap-2 cursor-pointer transition-all">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-on-surface-variant">account_balance</span>
+                                <div>
+                                    <h4 class="font-body-lg text-xs font-bold text-on-surface">Net Banking</h4>
+                                    <p class="font-body-md text-[10px] text-on-surface-variant">Secure cooperative &
+                                        private banks</p>
+                                </div>
+                            </div>
+                            <input type="radio" id="radio-netbanking" name="pay-method" value="netbanking"
+                                class="text-secondary focus:ring-secondary">
+                        </div>
+                        <div id="netbanking-fields" class="hidden pt-1">
+                            <select id="bank-select"
+                                class="w-full px-3 py-2 rounded-xl bg-surface border border-outline-variant/30 focus:border-secondary focus:ring-secondary text-xs">
+                                <option value="state_coop">State Tribal Cooperative Bank</option>
+                                <option value="sbi">State Bank of India</option>
+                                <option value="hdfc">HDFC Bank</option>
+                                <option value="icici">ICICI Bank</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Cash on Delivery -->
+                    <div onclick="selectPaymentMethod('cod')" id="opt-cod"
+                        class="border border-outline-variant/30 bg-surface/30 rounded-2xl p-3 flex flex-col gap-2 cursor-pointer transition-all">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-on-surface-variant">payments</span>
+                                <div>
+                                    <h4 class="font-body-lg text-xs font-bold text-on-surface">Cash on Delivery (COD)
+                                    </h4>
+                                    <p class="font-body-md text-[10px] text-on-surface-variant">Pay when tribal harvest
+                                        arrives</p>
+                                </div>
+                            </div>
+                            <input type="radio" id="radio-cod" name="pay-method" value="cod"
+                                class="text-secondary focus:ring-secondary">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-3 pt-2">
+                    <button onclick="goBackToDetailsStep()"
+                        class="flex-1 py-3.5 rounded-full bg-surface border border-outline-variant/30 text-on-surface font-semibold hover:bg-surface-container-low transition-colors text-xs flex items-center justify-center gap-1">
+                        <span class="material-symbols-outlined text-sm font-bold">arrow_back</span>
+                        Back
+                    </button>
+                    <button onclick="startSecurePaymentLoading()"
+                        class="flex-[2] py-3.5 rounded-full bg-secondary text-on-secondary font-semibold hover:opacity-95 transition-opacity text-xs flex items-center justify-center gap-1 shadow-md">
+                        Pay & Confirm Order
+                        <span class="material-symbols-outlined text-sm font-bold">lock</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Loading Screen Animation (10-second wait) -->
+            <div id="step-loading" class="hidden flex flex-col items-center justify-center py-6 text-center gap-6">
+                <div class="relative w-24 h-24 flex items-center justify-center">
+                    <div class="absolute inset-0 border-4 border-secondary/10 rounded-full"></div>
+                    <div
+                        class="absolute inset-0 border-4 border-t-secondary border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin duration-1000">
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-secondary text-[36px] font-bold animate-pulse">shield_lock</span>
+                </div>
+
+                <div class="space-y-2 max-w-xs">
+                    <h4 class="font-h2 text-sm font-bold text-on-surface">Securing Payment Corridor</h4>
+                    <p id="loading-message"
+                        class="font-body-md text-[11px] text-on-surface-variant h-8 transition-all duration-300">
+                        Initializing encrypted tribal escrow corridor...</p>
+                </div>
+
+                <!-- Custom 10-second Progress Bar -->
+                <div
+                    class="w-full bg-surface-container rounded-full h-2 relative overflow-hidden max-w-[240px] shadow-inner">
+                    <div id="progress-indicator"
+                        class="bg-gradient-to-r from-secondary to-secondary-fixed-dim h-full w-0 transition-all duration-300 ease-out">
+                    </div>
+                </div>
+
+                <div
+                    class="flex items-center gap-1.5 font-mono text-[10px] text-secondary font-bold bg-secondary/10 px-3 py-1.5 rounded-full">
+                    <span class="material-symbols-outlined text-[12px]">timer</span>
+                    <span>Direct Settlement: <span id="countdown-timer" class="text-xs">10</span>s</span>
+                </div>
+            </div>
+
+            <!-- Step 4: Final Order Confirmation -->
+            <div id="step-success" class="hidden flex flex-col items-center text-center gap-5 relative overflow-hidden">
+                <!-- Particle confetti anchor -->
+                <div id="confetti-anchor" class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+                </div>
+
+                <div
+                    class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center shadow-inner animate-bounce z-10">
+                    <span class="material-symbols-outlined text-[36px] font-bold">task_alt</span>
+                </div>
+
+                <div class="z-10">
+                    <h3 class="font-h2 text-xl font-bold text-on-surface mb-2">Order Confirmed Successfully!</h3>
+                    <p class="font-body-md text-on-surface-variant text-xs mb-4">Your direct fair price transaction has
+                        settled. Details dispatched to cooperatives.</p>
+
+                    <div
+                        class="bg-surface p-4 rounded-2xl border border-outline-variant/30 text-left space-y-2 font-mono text-[11px] text-on-surface-variant max-w-xs mx-auto shadow-inner">
+                        <div class="flex justify-between"><span>Order ID:</span><span id="display-order-id"
+                                class="font-bold text-on-surface">BST-481940</span></div>
+                        <div class="flex justify-between"><span>Livelihood Premium:</span><span
+                                class="text-secondary font-bold">100% Sourced</span></div>
+                        <div class="flex justify-between"><span>Paid via:</span><span id="display-payment-method"
+                                class="font-bold text-on-surface uppercase">UPI</span></div>
+                        <div class="flex justify-between pt-1.5 border-t border-surface-dim/30"><span>Amount
+                                Paid:</span><span id="display-total-amount"
+                                class="font-bold text-secondary text-xs">₹0</span></div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2 w-full z-10">
+                    <button onclick="trackOrderCheckout()"
+                        class="w-full py-3.5 px-4 rounded-full bg-secondary text-on-secondary font-semibold hover:opacity-95 transition-all text-xs shadow-md">
+                        Track Order Live
+                    </button>
+                    <button onclick="closeCheckout()"
+                        class="w-full py-3.5 px-4 rounded-full bg-surface border border-outline-variant/30 text-on-surface font-semibold hover:bg-surface-container-low transition-colors text-xs shadow-sm">
+                        Awesome, back to Sante!
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Floating Navigation Pill (Sleek Glassmorphic Tab Bar) -->
+    <nav
+        style="position: fixed !important; bottom: 20px !important; left: 0 !important; width: 100% !important; z-index: 999999 !important; display: flex !important; justify-content: center !important; padding: 0 16px !important; box-sizing: border-box !important;">
+        <div
+            class="bg-white/80 dark:bg-surface-container-highest/90 backdrop-blur-[25px] border border-white/40 dark:border-white/10 rounded-full shadow-[0_15px_35px_rgba(0,109,54,0.12)] flex justify-between items-center w-full max-w-[512px] px-2 py-2">
+
+            <!-- Discover Tab -->
+            <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-secondary/10 hover:text-secondary rounded-full transition-all"
+                href="discover.html">
+                <span class="material-symbols-outlined mb-0.5">explore</span>
+                <span class="font-label-caps text-[10px] font-semibold">Discover</span>
+            </a>
+
+            <!-- Favorites Tab -->
+            <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-secondary/10 hover:text-secondary rounded-full transition-all"
+                href="wishlist.html">
+                <span class="material-symbols-outlined mb-0.5">favorite</span>
+                <span class="font-label-caps text-[10px] font-semibold">Favorites</span>
+            </a>
+
+            <!-- Origin Tab -->
+            <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-secondary/10 hover:text-secondary rounded-full transition-all"
+                href="origin.html">
+                <span class="material-symbols-outlined mb-0.5">nature_people</span>
+                <span class="font-label-caps text-[10px] font-semibold">Origin</span>
+            </a>
+
+            <!-- Active Cart Tab -->
+            <a class="flex flex-col items-center justify-center bg-secondary/10 text-secondary active-glow rounded-full px-4 py-2 hover:bg-secondary/20 transition-all scale-[1.02] relative"
+                href="cart.html">
+                <span class="material-symbols-outlined mb-0.5"
+                    style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+                <span class="font-label-caps text-[10px] font-bold">Cart</span>
+                <span id="cart-pill-badge"
+                    class="absolute top-1 right-3 w-4 h-4 bg-secondary text-white rounded-full text-[9px] font-bold flex items-center justify-center shadow-sm">0</span>
+            </a>
+
+            <!-- Account Tab -->
+            <a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 hover:bg-secondary/10 hover:text-secondary rounded-full transition-all"
+                href="account.html">
+                <span class="material-symbols-outlined mb-0.5">person</span>
+                <span class="font-label-caps text-[10px] font-semibold">Account</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Interactive Logic and Sychronizer -->
+    <script>
+        // Setup dynamic productsDatabase from localStorage
+        const productsDatabase = JSON.parse(localStorage.getItem('sante_products')) || [
+            { id: 'h1', name: 'Raw Forest Honey', price: 450, badge: 'Fair Price', image: 'raw_forest_honey.png', coop: 'Soliga Tribe Co-op' },
+            { id: 'b2', name: 'Sleek Bamboo Flask', price: 450, badge: 'Insulated', image: 'bamboo_flask.png', coop: 'Nilgiri Bamboo Guild' }
+        ];
+
+        // Retrieve/Setup Cart dynamically mapped to local cart format for compatibility
+        let cart = [];
+        try {
+            const rawSanteCart = JSON.parse(localStorage.getItem('sante_cart')) || [];
+            cart = rawSanteCart.map(item => ({
+                id: item.productId,
+                qty: item.quantity
+            })).filter(item => item.id);
+        } catch (e) {
+            cart = [];
+        }
+
+        // Render functions
+        function renderCart() {
+            const listContainer = document.getElementById('cart-list');
+            const summaryCard = document.getElementById('pricing-summary-card');
+            const emptyView = document.getElementById('empty-cart-view');
+            const pillBadge = document.getElementById('cart-pill-badge');
+
+            listContainer.innerHTML = '';
+
+            // Total units calculation
+            const totalUnits = cart.reduce((acc, curr) => acc + curr.qty, 0);
+            localStorage.setItem('cartCount', totalUnits);
+            pillBadge.innerText = totalUnits;
+
+            if (cart.length === 0) {
+                emptyView.classList.remove('hidden');
+                summaryCard.classList.add('hidden');
+                return;
+            }
+
+            emptyView.classList.add('hidden');
+            summaryCard.classList.remove('hidden');
+
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const product = productsDatabase.find(p => p.id === item.id) || productsDatabase[0];
+                const itemTotal = product.price * item.qty;
+                subtotal += itemTotal;
+
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-[24px] p-4 flex gap-4 items-center relative overflow-hidden transition-all duration-300 transform scale-100 opacity-100 hover:shadow-lg hover:border-white/50";
+                card.id = `cart-card-${item.id}`;
+
+                card.innerHTML = `
+                    <!-- Product Image -->
+                    <div class="w-20 h-20 bg-surface rounded-xl overflow-hidden shadow-inner border border-white/40 flex-shrink-0">
+                        <img class="w-full h-full object-cover" src="${product.image}" alt="${product.name}">
+                    </div>
+                    
+                    <!-- Details -->
+                    <div class="flex-1 space-y-1">
+                        <span class="text-[10px] font-label-caps font-semibold text-secondary px-2 py-0.5 bg-secondary/10 rounded-full border border-secondary/20">${product.coop}</span>
+                        <h4 class="font-body-lg text-on-surface font-bold text-sm leading-tight">${product.name}</h4>
+                        <p class="font-price-display text-sm text-on-surface-variant">₹${product.price} / unit</p>
+                    </div>
+
+                    <!-- Quantity Stepper & Delete -->
+                    <div class="flex flex-col items-end justify-between gap-3 flex-shrink-0">
+                        <button onclick="removeItem('${item.id}')" class="text-on-surface-variant hover:text-error transition-colors w-8 h-8 rounded-full hover:bg-error/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-lg">delete</span>
+                        </button>
+                        
+                        <div class="flex items-center bg-surface-container-low rounded-full border border-white/50 px-1 py-0.5 shadow-sm">
+                            <button onclick="updateQty('${item.id}', -1)" class="w-6 h-6 rounded-full text-on-surface hover:bg-secondary/10 hover:text-secondary flex items-center justify-center font-bold text-sm transition-colors">-</button>
+                            <span class="px-2 font-mono text-xs font-bold text-on-surface">${item.qty}</span>
+                            <button onclick="updateQty('${item.id}', 1)" class="w-6 h-6 rounded-full text-on-surface hover:bg-secondary/10 hover:text-secondary flex items-center justify-center font-bold text-sm transition-colors">+</button>
+                        </div>
+                    </div>
+                `;
+
+                listContainer.appendChild(card);
+            });
+
+            // Calculate summaries
+            const premium = Math.round(subtotal * 0.10);
+            const shipping = subtotal > 0 ? 40 : 0;
+            const grandTotal = subtotal + premium + shipping;
+
+            document.getElementById('subtotal-display').innerText = `₹${subtotal}`;
+            document.getElementById('premium-display').innerText = `+ ₹${premium}`;
+            document.getElementById('shipping-display').innerText = `₹${shipping}`;
+            document.getElementById('total-display').innerText = `₹${grandTotal}`;
+        }
+
+        // Action methods
+        function updateQty(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    removeItem(id);
+                    return;
+                }
+                saveCartState();
+                renderCart();
+            }
+        }
+
+        function removeItem(id) {
+            const card = document.getElementById(`cart-card-${id}`);
+            if (card) {
+                card.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    cart = cart.filter(i => i.id !== id);
+                    saveCartState();
+                    renderCart();
+                }, 250);
+            } else {
+                cart = cart.filter(i => i.id !== id);
+                saveCartState();
+                renderCart();
+            }
+        }
+
+        function clearCart() {
+            if (confirm("Are you sure you want to empty your cart?")) {
+                cart = [];
+                saveCartState();
+                renderCart();
+            }
+        }
+
+        function saveCartState() {
+            localStorage.setItem('cartList', JSON.stringify(cart));
+
+            // Sync to sante_cart as well!
+            const santeCart = cart.map(item => ({
+                productId: item.id,
+                quantity: item.qty
+            }));
+            localStorage.setItem('sante_cart', JSON.stringify(santeCart));
+
+            const totalUnits = cart.reduce((acc, curr) => acc + curr.qty, 0);
+            localStorage.setItem('cartCount', totalUnits);
+        }
+
+        // Multi-Step Checkout Controllers
+        let activePaymentMethod = 'upi';
+        let checkoutOrderId = '';
+
+        function proceedToCheckout() {
+            // Generate elegant random Order ID
+            checkoutOrderId = 'BST-' + Math.floor(100000 + Math.random() * 900000);
+            localStorage.setItem('checkoutOrderId', checkoutOrderId);
+
+            // Prefill from userProfile in localStorage if it exists
+            const stored = localStorage.getItem('userProfile');
+            if (stored) {
+                const profile = JSON.parse(stored);
+                if (profile.name && document.getElementById('cust-name')) {
+                    document.getElementById('cust-name').value = profile.name;
+                }
+                if (profile.email && document.getElementById('cust-email')) {
+                    document.getElementById('cust-email').value = profile.email;
+                }
+                if (profile.phone && document.getElementById('cust-phone')) {
+                    document.getElementById('cust-phone').value = profile.phone;
+                }
+                if (profile.address && document.getElementById('cust-address')) {
+                    document.getElementById('cust-address').value = profile.address;
+                }
+                if (profile.upi && document.getElementById('upi-id')) {
+                    document.getElementById('upi-id').value = profile.upi;
+                }
+                if (profile.cardNumber && document.getElementById('card-num')) {
+                    document.getElementById('card-num').value = profile.cardNumber;
+                }
+                if (profile.cardExpiry && document.getElementById('card-expiry')) {
+                    document.getElementById('card-expiry').value = profile.cardExpiry;
+                }
+                if (profile.cardCvv && document.getElementById('card-cvv')) {
+                    document.getElementById('card-cvv').value = profile.cardCvv;
+                }
+            }
+
+            // Set initial state
+            document.getElementById('step-indicator').innerText = 'Step 1 of 4: Customer Details';
+            document.getElementById('step-title').innerText = 'Shipping & Delivery';
+
+            // Show details panel, hide others
+            document.getElementById('step-details').classList.remove('hidden');
+            document.getElementById('step-payment').classList.add('hidden');
+            document.getElementById('step-loading').classList.add('hidden');
+            document.getElementById('step-success').classList.add('hidden');
+
+            // Open Modal
+            const modal = document.getElementById('checkout-modal');
+            const container = document.getElementById('modal-container');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                container.classList.remove('scale-95', 'opacity-0');
+                container.classList.add('scale-100', 'opacity-100');
+            }, 50);
+        }
+
+        function exitCheckoutFlow() {
+            const modal = document.getElementById('checkout-modal');
+            const container = document.getElementById('modal-container');
+            container.classList.remove('scale-100', 'opacity-100');
+            container.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function goToPaymentStep() {
+            // Update indicator
+            document.getElementById('step-indicator').innerText = 'Step 2 of 4: Payment Method';
+            document.getElementById('step-title').innerText = 'Secure Payment';
+
+            // Transition
+            document.getElementById('step-details').classList.add('hidden');
+            document.getElementById('step-payment').classList.remove('hidden');
+        }
+
+        function goBackToDetailsStep() {
+            document.getElementById('step-indicator').innerText = 'Step 1 of 4: Customer Details';
+            document.getElementById('step-title').innerText = 'Shipping & Delivery';
+
+            document.getElementById('step-payment').classList.add('hidden');
+            document.getElementById('step-details').classList.remove('hidden');
+        }
+
+        function selectPaymentMethod(method) {
+            activePaymentMethod = method;
+
+            // Uncheck all radios and reset option styles
+            const options = ['upi', 'card', 'netbanking', 'cod'];
+            options.forEach(opt => {
+                const element = document.getElementById(`opt-${opt}`);
+                const radio = document.getElementById(`radio-${opt}`);
+                const fields = document.getElementById(`${opt}-fields`) || document.getElementById(`${opt}-field`);
+
+                if (opt === method) {
+                    element.classList.remove('border-outline-variant/30', 'bg-surface/30');
+                    element.classList.add('border-secondary', 'bg-secondary/5');
+                    radio.checked = true;
+                    if (fields) fields.classList.remove('hidden');
+                } else {
+                    element.classList.remove('border-secondary', 'bg-secondary/5');
+                    element.classList.add('border-outline-variant/30', 'bg-surface/30');
+                    radio.checked = false;
+                    if (fields) fields.classList.add('hidden');
+                }
+            });
+        }
+
+        function startSecurePaymentLoading() {
+            // Update indicator
+            document.getElementById('step-indicator').innerText = 'Step 3 of 4: Secure Bank Network';
+            document.getElementById('step-title').innerText = 'Authorized Secure Payment';
+
+            // Transition
+            document.getElementById('step-payment').classList.add('hidden');
+            document.getElementById('step-loading').classList.remove('hidden');
+
+            const progress = document.getElementById('progress-indicator');
+            const timerText = document.getElementById('countdown-timer');
+            const messageText = document.getElementById('loading-message');
+
+            const loadingMessages = [
+                { time: 10, text: "Initializing encrypted tribal escrow corridor..." },
+                { time: 8, text: "Connecting to Reserve Tribal Cooperative Bank..." },
+                { time: 6, text: "Validating transaction ledger credentials..." },
+                { time: 4, text: "Confirming 100% fair-price routed livelihood premium..." },
+                { time: 2, text: "Securing digital certificate with blockchain cooperative..." }
+            ];
+
+            let timeLeft = 10;
+            progress.style.width = '0%';
+            timerText.innerText = timeLeft;
+
+            // Update progress bar smooth animation
+            setTimeout(() => {
+                progress.style.transition = 'width 10s linear';
+                progress.style.width = '100%';
+            }, 50);
+
+            // 10-second interval countdown
+            const interval = setInterval(() => {
+                timeLeft--;
+                if (timeLeft >= 0) {
+                    timerText.innerText = timeLeft;
+
+                    // Update dynamic message
+                    const msg = loadingMessages.find(m => timeLeft <= m.time);
+                    if (msg) {
+                        messageText.style.opacity = '0';
+                        setTimeout(() => {
+                            messageText.innerText = msg.text;
+                            messageText.style.opacity = '1';
+                        }, 150);
+                    }
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    showSuccessOrderPanel();
+                }
+            }, 1000);
+        }
+
+        function showSuccessOrderPanel() {
+            // Update indicator
+            document.getElementById('step-indicator').innerText = 'Step 4 of 4: Success!';
+            document.getElementById('step-title').innerText = 'Order Placed!';
+
+            // Transition
+            document.getElementById('step-loading').classList.add('hidden');
+            document.getElementById('step-success').classList.remove('hidden');
+
+            // Set dynamic receipt info
+            document.getElementById('display-order-id').innerText = checkoutOrderId;
+            document.getElementById('display-payment-method').innerText = activePaymentMethod.toUpperCase();
+            document.getElementById('display-total-amount').innerText = document.getElementById('total-display').innerText;
+
+            // Save order to sante_orders
+            let ordersList = [];
+            try {
+                ordersList = JSON.parse(localStorage.getItem('sante_orders')) || [];
+            } catch (e) {
+                ordersList = [];
+            }
+
+            const orderItems = cart.map(item => {
+                const product = productsDatabase.find(p => p.id === item.id) || {};
+                return {
+                    productId: item.id,
+                    quantity: item.qty,
+                    price: product.price || 0,
+                    title: product.name || "Sante Item"
+                };
+            });
+
+            const totalAmountStr = document.getElementById('total-display').innerText.replace(/[^\d]/g, '');
+            const totalAmount = parseInt(totalAmountStr) || 0;
+
+            const newOrder = {
+                id: checkoutOrderId,
+                date: new Date().toISOString(),
+                items: orderItems,
+                total: totalAmount,
+                status: "Processing",
+                trackingId: 'TRK-' + Math.floor(100000 + Math.random() * 900000)
+            };
+
+            ordersList.unshift(newOrder); // Add to the front of the list
+            localStorage.setItem('sante_orders', JSON.stringify(ordersList));
+
+            // Update Seller Balance in Merchant Portal (Simulation)
+            let currentSellerBalance = parseFloat(localStorage.getItem('sellerBalance') || '45250');
+            currentSellerBalance += totalAmount;
+            localStorage.setItem('sellerBalance', currentSellerBalance);
+
+            // Clear cart from localStorage since order is placed successfully
+            localStorage.removeItem('sante_cart');
+            localStorage.removeItem('cartList');
+            localStorage.setItem('cartCount', '0');
+
+            // Trigger beautiful CSS confetti animation
+            createConfettiEffect();
+        }
+
+        function createConfettiEffect() {
+            const anchor = document.getElementById('confetti-anchor');
+            anchor.innerHTML = '';
+            const colors = ['#006d36', '#83fba5', '#ffe16d', '#705d00', '#ba1a1a', '#e9c400'];
+
+            for (let i = 0; i < 40; i++) {
+                const p = document.createElement('div');
+                p.className = 'confetti-sparkle';
+                p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * -20 + 'px';
+                p.style.animationDelay = Math.random() * (Math.random() * 2) + 's';
+                p.style.transform = `scale(${Math.random() * 0.6 + 0.4})`;
+                anchor.appendChild(p);
+            }
+        }
+
+        function closeCheckout() {
+            const modal = document.getElementById('checkout-modal');
+            const container = document.getElementById('modal-container');
+            container.classList.remove('scale-100', 'opacity-100');
+            container.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                // Clear cart completely on successful checkout purchase
+                cart = [];
+                saveCartState();
+                renderCart();
+                window.location.href = 'discover.html';
+            }, 300);
+        }
+
+        function trackOrderCheckout() {
+            const modal = document.getElementById('checkout-modal');
+            const container = document.getElementById('modal-container');
+            container.classList.remove('scale-100', 'opacity-100');
+            container.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                // Clear cart completely on successful checkout purchase
+                cart = [];
+                saveCartState();
+                renderCart();
+                window.location.href = 'tracking.html';
+            }, 300);
+        }
+
+        // Initialize view
+        renderCart();
+    </script>
+</body>
+
+</html>

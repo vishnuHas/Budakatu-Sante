@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Budakattu-Sante - Profile</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Epilogue:wght@600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#ffffff",
+                        "on-tertiary-fixed-variant": "#544600",
+                        "surface": "transparent",
+                        "on-primary-fixed": "#1a1c1c",
+                        "tertiary": "#705d00",
+                        "on-tertiary-fixed": "#221b00",
+                        "on-secondary-fixed": "#00210c",
+                        "surface-container-high": "transparent",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#00743a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#ffffff",
+                        "inverse-on-surface": "transparent",
+                        "outline": "#747878",
+                        "on-background": "#161c22",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "transparent",
+                        "on-primary-fixed-variant": "#454747",
+                        "primary": "#5d5f5f",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#8b7400",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#5d5f5f",
+                        "secondary": "#006d36",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#e9c400",
+                        "secondary-container": "#83fba5",
+                        "primary-fixed": "#e2e2e2",
+                        "outline-variant": "#c4c7c8",
+                        "tertiary-fixed": "#ffe16d",
+                        "surface-container": "transparent",
+                        "on-surface": "#161c22",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "transparent",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "on-surface-variant": "#444748",
+                        "surface-bright": "transparent",
+                        "secondary-fixed": "#83fba5",
+                        "on-primary-container": "#747676",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "section-gap": "48px",
+                        "container-margin": "24px",
+                        "card-padding": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "h2": ["Epilogue"],
+                        "price-display": ["Space Grotesk"],
+                        "body-lg": ["Manrope"],
+                        "h1": ["Epilogue"],
+                        "label-caps": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "h2": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "price-display": ["24px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h1": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html,
+        body {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        html,
+        body {
+            height: 100% !important;
+            height: 100vh !important;
+            height: 100dvh !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        body {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+    </style>
+    <script src="i18n.js" defer></script>
+    <script src="device-lock.js" defer></script>
+</head>
+
+<body
+    class="bg-background min-h-screen font-body-md text-on-background relative overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+    <!-- Ambient Background Aurora -->
+    <div
+        class="fixed inset-0 z-[-1] bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-secondary-container/10 via-surface to-surface-bright opacity-80 pointer-events-none">
+    </div>
+    <div
+        class="fixed inset-0 z-[-1] bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-tertiary-fixed-dim/5 via-transparent to-transparent opacity-60 pointer-events-none">
+    </div>
+
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-16 bg-white/60 dark:bg-surface/40 backdrop-blur-[25px] border-b border-white/30 dark:border-white/10 shadow-[0_40px_40px_rgba(0,109,54,0.05)]">
+        <button
+            class="text-secondary dark:text-secondary-fixed hover:scale-110 active:scale-95 transition-all w-10 h-10 flex items-center justify-center rounded-full bg-white/40 border border-white/30">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+
+        <div class="font-h2 text-h2 font-bold tracking-tight text-on-surface dark:text-surface-bright absolute left-1/2 -translate-x-1/2"
+            data-i18n="Profile">
+            Profile
+        </div>
+
+        <div id="lang-target" class="w-10 h-10 flex items-center justify-center"></div>
+    </header>
+
+    <!-- Navigation Drawer (Desktop) -->
+    <aside
+        class="hidden md:flex flex-col h-full p-gutter fixed top-16 left-0 z-40 bg-white/80 dark:bg-surface-container-highest/90 backdrop-blur-[40px] docked left-0 h-full w-80 rounded-r-xl border-r border-white/20 shadow-2xl">
+        <div class="flex flex-col gap-unit mt-8">
+            <div class="px-4 py-2 font-h2 text-h2 text-secondary">Forest Patron</div>
+            <div class="px-4 pb-8 font-body-md text-body-md text-on-surface-variant">Member since 2023</div>
+            <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-secondary hover:bg-surface-container-low transition-colors font-body-lg text-body-lg rounded-lg"
+                href="discover.html">
+                <span class="material-symbols-outlined">explore</span> Discover Marketplace
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-secondary hover:bg-surface-container-low transition-colors font-body-lg text-body-lg rounded-lg"
+                href="wishlist.html">
+                <span class="material-symbols-outlined">favorite</span> Favorites / Wishlist
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-secondary hover:bg-surface-container-low transition-colors font-body-lg text-body-lg rounded-lg"
+                href="cart.html">
+                <span class="material-symbols-outlined">shopping_bag</span> Basket Cart
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-secondary hover:bg-surface-container-low transition-colors font-body-lg text-body-lg rounded-lg"
+                href="account.html">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span> Account
+                Profile
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 text-error hover:bg-error/5 transition-colors font-body-lg text-body-lg rounded-lg mt-8 border-t border-white/20 pt-4"
+                href="login.html" onclick="localStorage.removeItem('userLoggedIn')">
+                <span class="material-symbols-outlined">logout</span> Logout
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Canvas -->
+    <main
+        class="flex-1 overflow-y-auto pb-32 px-container-margin max-w-5xl mx-auto md:ml-80 md:pl-12 flex flex-col gap-section-gap w-full hide-scrollbar"
+        style="padding-top: 80px !important; -webkit-overflow-scrolling: touch !important;">
+        <!-- Profile Hero Card (White Glassmorphism) -->
+        <section
+            class="relative bg-white/60 backdrop-blur-[30px] border border-white/40 ring-1 ring-inset ring-white/50 rounded-[2rem] flex flex-col md:flex-row items-center gap-8 group"
+            style="padding: 32px 32px 32px 32px; overflow: visible;">
+            <!-- Decorative inner glow element -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-secondary-container/20 rounded-full blur-[40px] pointer-events-none transition-all duration-700 group-hover:bg-secondary-container/30"
+                style="transform: translate(25%, -25%);">
+            </div>
+            <div class="relative shrink-0">
+                <img id="avatar-display" alt="Profile Avatar"
+                    class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white/80 shadow-[0_20px_40px_rgba(0,0,0,0.1)] relative z-10"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcr7m-LegLZ_4GdgYqfOwWPwKQSUKAUj2X_ULFZnC3cttQpjbWTPlhdNgZqT1pISawg182xyuM295DnZ8a8YG74tsKSk7j5n1bzytb6uWtq8FFQQ9J366XJOf0z7U4UCSZ2hxHHtGypTmMY0EJeLk0IoguW90YgM67mUdvd6CjMl8PM1oe7Js36J7XKKjHg2ESCkPaArCYafhJ3Jt3n95lLBsX9AOuJCnkMClCZOvUa_UvaMGoJRZzKPLvj2HXU9E9NXa8pjChr2lh" />
+                <!-- Tribal Support Badge -->
+                <div
+                    class="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-secondary text-on-secondary font-label-caps text-label-caps px-4 py-1.5 rounded-full shadow-lg border border-secondary/20 flex items-center gap-1 z-20">
+                    <span class="material-symbols-outlined text-[14px]">volunteer_activism</span>
+                    Tribal Support Badge
+                </div>
+            </div>
+            <div class="flex flex-col items-center md:items-start text-center md:text-left z-10 flex-1">
+                <h1 id="name-display" class="font-h1 text-h1 text-on-surface mb-2">Elenora Vance</h1>
+                <p id="email-phone-display" class="font-body-md text-body-md text-secondary font-semibold mb-2">
+                    elenora.vance@canopy.org • +91 98765 43210</p>
+                <p id="address-display" class="font-body-lg text-body-lg text-on-surface-variant max-w-md">142 Oakwood
+                    Drive, Bangalore, KA</p>
+                <div class="mt-6 flex gap-4">
+                    <button onclick="openEditProfileModal()"
+                        class="bg-gradient-to-b from-secondary to-[#005a2c] text-on-secondary font-label-caps text-label-caps px-6 py-3 rounded-full shadow-[0_10px_20px_rgba(0,109,54,0.2)] hover:opacity-90 transition-opacity ring-1 ring-inset ring-white/20">Edit
+                        Profile</button>
+                    <button onclick="shareHub()"
+                        class="bg-white/40 text-secondary font-label-caps text-label-caps px-6 py-3 rounded-full border border-white/60 hover:bg-white/60 transition-colors backdrop-blur-md">Share
+                        Hub</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Grid Sections -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-unit md:gap-6">
+            <!-- Saved Orders / Track Live Order Button -->
+            <div onclick="goToTracking()"
+                class="bg-white/50 backdrop-blur-[25px] border border-white/40 ring-1 ring-inset ring-white/50 rounded-[1.5rem] p-card-padding shadow-[0_20px_40px_rgba(0,0,0,0.02)] hover:bg-white/60 transition-colors cursor-pointer group flex flex-col justify-between min-h-[200px]">
+                <div class="flex justify-between items-start">
+                    <div
+                        class="p-3 bg-surface-container-highest/50 rounded-full text-secondary group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined">inventory_2</span>
+                    </div>
+                    <span
+                        class="material-symbols-outlined text-on-surface-variant opacity-50 group-hover:opacity-100 transition-opacity group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span>
+                </div>
+                <div>
+                    <h3 class="font-h2 text-h2 text-on-surface mb-1 flex items-center gap-2">
+                        Saved Orders
+                        <span
+                            class="bg-secondary/10 text-secondary text-xs px-2.5 py-1 rounded-full animate-pulse">Track
+                            live</span>
+                    </h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Click to track your recent
+                        forest-to-home deliveries live.</p>
+                </div>
+            </div>
+
+            <!-- Impact Level -->
+            <div
+                class="bg-gradient-to-br from-secondary/5 to-secondary/10 backdrop-blur-[25px] border border-secondary/20 ring-1 ring-inset ring-white/50 rounded-[1.5rem] p-card-padding shadow-[0_20px_40px_rgba(0,109,54,0.04)] hover:shadow-[0_20px_40px_rgba(0,109,54,0.08)] transition-all cursor-pointer group flex flex-col justify-between min-h-[200px]">
+                <div class="flex justify-between items-start">
+                    <div class="p-3 bg-secondary/10 rounded-full text-secondary">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">eco</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="font-price-display text-price-display text-secondary mb-1">Gold Tier</div>
+                    <h3 class="font-h2 text-h2 text-on-surface mb-1">Impact Level</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">You've helped preserve 12 acres of
+                        canopy.</p>
+                </div>
+            </div>
+
+            <!-- Followed Artisans -->
+            <div
+                class="bg-white/50 backdrop-blur-[25px] border border-white/40 ring-1 ring-inset ring-white/50 rounded-[1.5rem] p-card-padding shadow-[0_20px_40px_rgba(0,0,0,0.02)] hover:bg-white/60 transition-colors cursor-pointer group flex flex-col justify-between min-h-[200px]">
+                <div class="flex justify-between items-start">
+                    <div
+                        class="p-3 bg-surface-container-highest/50 rounded-full text-secondary group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined">diversity_3</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-h2 text-h2 text-on-surface mb-2">Followed Artisans</h3>
+                    <!-- Overlapping Circle Avatars with Hover Name Tooltips -->
+                    <div class="flex -space-x-3 overflow-visible py-1" id="followed-sellers-list">
+                        <!-- Populated dynamically or falls back to defaults -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preferences -->
+            <div
+                class="bg-white/50 backdrop-blur-[25px] border border-white/40 ring-1 ring-inset ring-white/50 rounded-[1.5rem] p-card-padding shadow-[0_20px_40px_rgba(0,0,0,0.02)] hover:bg-white/60 transition-colors cursor-pointer group flex flex-col justify-between min-h-[200px]">
+                <div class="flex justify-between items-start">
+                    <div
+                        class="p-3 bg-surface-container-highest/50 rounded-full text-secondary group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined">tune</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-h2 text-h2 text-on-surface mb-1">Preferences</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Manage notifications and account
+                        details.</p>
+                </div>
+            </div>
+
+            <!-- Logout -->
+            <div onclick="localStorage.removeItem('userLoggedIn'); window.location.href='login.html';"
+                class="bg-error/5 hover:bg-error/10 backdrop-blur-[25px] border border-error/20 rounded-[1.5rem] p-card-padding shadow-[0_20px_40px_rgba(0,0,0,0.02)] transition-colors cursor-pointer group flex flex-col justify-between min-h-[200px]">
+                <div class="flex justify-between items-start">
+                    <div class="p-3 bg-error/10 rounded-full text-error group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined font-bold">logout</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-h2 text-h2 text-error font-bold mb-1">Logout</h3>
+                    <p class="font-body-md text-body-md text-error/80">Sign out of your Forest Patron session.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- BottomNavBar (Mobile) -->
+    <nav style="position: fixed !important; bottom: 20px !important; left: 0 !important; width: 100% !important; z-index: 999999 !important; display: flex !important; justify-content: center !important; padding: 0 16px !important; box-sizing: border-box !important;"
+        class="md:hidden">
+        <div
+            class="bg-white/80 dark:bg-surface-container-highest/90 backdrop-blur-[25px] border border-white/40 dark:border-white/10 rounded-full shadow-[0_15px_35px_rgba(0,109,54,0.12)] flex justify-between items-center w-full max-w-[512px] px-2 py-2">
+            <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors rounded-full flex-1"
+                href="discover.html">
+                <span class="material-symbols-outlined mb-1">explore</span>
+                <span class="font-label-caps text-[10px] tracking-wider font-semibold">Discover</span>
+            </a>
+            <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors rounded-full flex-1"
+                href="wishlist.html">
+                <span class="material-symbols-outlined mb-1">favorite</span>
+                <span class="font-label-caps text-[10px] tracking-wider font-semibold">Favorites</span>
+            </a>
+            <a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors rounded-full flex-1 relative"
+                href="cart.html">
+                <span class="material-symbols-outlined mb-1">shopping_bag</span>
+                <span class="font-label-caps text-[10px] tracking-wider font-semibold">Cart</span>
+                <span id="mobile-cart-badge"
+                    class="absolute top-1 right-5 w-4 h-4 bg-secondary text-white rounded-full text-[9px] font-bold flex items-center justify-center shadow-sm">0</span>
+            </a>
+            <a class="flex flex-col items-center justify-center bg-secondary/10 dark:bg-secondary-container/20 text-secondary dark:text-secondary-fixed rounded-full px-4 py-2 scale-90 transition-all duration-300 flex-1"
+                href="account.html">
+                <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+                <span
+                    class="font-label-caps text-[10px] tracking-wider font-semibold text-secondary dark:text-secondary-fixed">Account</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- EDIT PROFILE COMPREHENSIVE MODAL -->
+    <div id="edit-profile-modal"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-md hidden opacity-0 transition-all duration-300">
+        <div id="edit-modal-container"
+            class="bg-white/95 backdrop-blur-[35px] border border-white rounded-[32px] w-full max-w-lg shadow-[0_40px_80px_rgba(0,0,0,0.15)] overflow-hidden transform scale-95 opacity-0 transition-all duration-300 max-h-[90vh] flex flex-col">
+            <!-- Modal Header -->
+            <div
+                class="px-6 py-5 border-b border-outline-variant/20 flex justify-between items-center bg-secondary/5 shrink-0">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                        <span class="material-symbols-outlined text-lg">edit_square</span>
+                    </div>
+                    <span class="font-h2 text-lg font-bold text-on-surface">Update Profile & Settings</span>
+                </div>
+                <button onclick="closeEditProfileModal()"
+                    class="w-8 h-8 rounded-full bg-surface-container-high hover:bg-surface-container text-on-surface-variant transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]">close</span>
+                </button>
+            </div>
+
+            <!-- Modal Content (Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-5">
+                <!-- Avatar Preview & Input -->
+                <div
+                    class="flex items-center gap-4 bg-surface-container-low/50 p-4 rounded-2xl border border-outline-variant/10">
+                    <img id="modal-avatar-preview"
+                        class="w-16 h-16 rounded-full object-cover border-2 border-secondary/20 shadow-inner" src="" />
+                    <div class="flex-1 space-y-1">
+                        <label
+                            class="block font-label-caps text-[10px] text-on-surface-variant font-bold uppercase">Profile
+                            Image URL</label>
+                        <input id="input-image" type="text" placeholder="Paste image URL here"
+                            class="w-full bg-white border border-outline-variant/30 rounded-xl py-1.5 px-3 font-body-md text-sm focus:border-secondary focus:ring-0" />
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="space-y-4">
+                    <h4
+                        class="font-label-caps text-[11px] text-secondary font-bold uppercase border-b border-outline-variant/10 pb-1 flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">badge</span> Personal Info
+                    </h4>
+                    <div class="grid grid-cols-1 gap-3">
+                        <div>
+                            <label
+                                class="block font-label-caps text-[10px] text-on-surface-variant font-bold uppercase mb-1">Full
+                                Name</label>
+                            <input id="input-name" type="text"
+                                class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-0 rounded-xl py-2 px-3 font-body-md text-sm text-on-surface" />
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label
+                                    class="block font-label-caps text-[10px] text-on-surface-variant font-bold uppercase mb-1">Email
+                                    Address</label>
+                                <input id="input-email" type="email"
+                                    class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-0 rounded-xl py-2 px-3 font-body-md text-sm text-on-surface" />
+                            </div>
+                            <div>
+                                <label
+                                    class="block font-label-caps text-[10px] text-on-surface-variant font-bold uppercase mb-1">Phone
+                                    Number</label>
+                                <input id="input-phone" type="text"
+                                    class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-0 rounded-xl py-2 px-3 font-body-md text-sm text-on-surface" />
+                            </div>
+                        </div>
+                        <div>
+                            <label
+                                class="block font-label-caps text-[10px] text-on-surface-variant font-bold uppercase mb-1">Default
+                                Shipping Address</label>
+                            <textarea id="input-address" rows="2"
+                                class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-0 rounded-xl py-2 px-3 font-body-md text-sm text-on-surface"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Default Secure Payment Saved Config -->
+                <div class="space-y-4">
+                    <h4
+                        class="font-label-caps text-[11px] text-secondary font-bold uppercase border-b border-outline-variant/10 pb-1 flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">payments</span> Presaved Payment Details
+                        (Auto-fills Cart Checkout)
+                    </h4>
+                    <div class="grid grid-cols-1 gap-3">
+                        <div>
+                            <label
+                                class="block font-label-caps text-[10px] text-on-surface-variant font-bold uppercase mb-1">UPI
+                                ID (GooglePay / Paytm)</label>
+                            <input id="input-upi" type="text" placeholder="example@okhdfcbank"
+                                class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-0 rounded-xl py-2 px-3 font-body-md text-sm text-on-surface" />
+                        </div>
+                        <div
+                            class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/10 space-y-3">
+                            <span class="block font-label-caps text-[10px] text-secondary font-bold uppercase">Saved
+                                Credit / Debit Card</span>
+                            <div>
+                                <label
+                                    class="block font-label-caps text-[9px] text-on-surface-variant font-semibold mb-0.5">Card
+                                    Number</label>
+                                <input id="input-card-number" type="text" placeholder="XXXX XXXX XXXX XXXX"
+                                    class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-0 rounded-xl py-1.5 px-3 font-body-md text-xs text-on-surface" />
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label
+                                        class="block font-label-caps text-[9px] text-on-surface-variant font-semibold mb-0.5">Expiration
+                                        MM/YY</label>
+                                    <input id="input-card-expiry" type="text" placeholder="MM/YY"
+                                        class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-0 rounded-xl py-1.5 px-3 font-body-md text-xs text-on-surface" />
+                                </div>
+                                <div>
+                                    <label
+                                        class="block font-label-caps text-[9px] text-on-surface-variant font-semibold mb-0.5">CVV
+                                        Code</label>
+                                    <input id="input-card-cvv" type="password" placeholder="***"
+                                        class="w-full bg-white border border-outline-variant/30 focus:border-secondary focus:ring-0 rounded-xl py-1.5 px-3 font-body-md text-xs text-on-surface" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div
+                class="px-6 py-4 bg-surface-container-low border-t border-outline-variant/20 flex justify-end gap-3 shrink-0">
+                <button onclick="closeEditProfileModal()"
+                    class="px-5 py-2.5 rounded-full border border-outline-variant/30 text-on-surface-variant font-label-caps text-xs hover:bg-surface-container transition-colors">Cancel</button>
+                <button onclick="saveProfileChanges()"
+                    class="bg-gradient-to-b from-secondary to-[#005a2c] text-on-secondary px-6 py-2.5 rounded-full font-label-caps text-xs shadow-md hover:opacity-90 transition-opacity">Save
+                    & Pre-Fill</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast Notification -->
+    <div id="toast-notification"
+        class="fixed top-20 right-6 z-[120] bg-white/90 backdrop-blur-[25px] border border-secondary/20 px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-[-100px] opacity-0 transition-all duration-500 hidden">
+        <div class="w-8 h-8 bg-secondary/10 text-secondary rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined text-lg font-bold">check_circle</span>
+        </div>
+        <p class="text-xs font-semibold text-on-surface" id="toast-message-text"></p>
+    </div>
+
+    <script>
+        // Redirect to seller page if logged in as seller
+        if (localStorage.getItem('userRole') === 'seller') {
+            window.location.replace('seller_account.html');
+        }
+
+        // Default fallbacks
+        const defaultProfile = {
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCcr7m-LegLZ_4GdgYqfOwWPwKQSUKAUj2X_ULFZnC3cttQpjbWTPlhdNgZqT1pISawg182xyuM295DnZ8a8YG74tsKSk7j5n1bzytb6uWtq8FFQQ9J366XJOf0z7U4UCSZ2hxHHtGypTmMY0EJeLk0IoguW90YgM67mUdvd6CjMl8PM1oe7Js36J7XKKjHg2ESCkPaArCYafhJ3Jt3n95lLBsX9AOuJCnkMClCZOvUa_UvaMGoJRZzKPLvj2HXU9E9NXa8pjChr2lh",
+            name: "Elenora Vance",
+            email: "elenora.vance@canopy.org",
+            phone: "+91 98765 43210",
+            address: "142 Oakwood Drive, Bangalore, KA",
+            upi: "elenora@okupi",
+            cardNumber: "4321 8892 0019 4721",
+            cardExpiry: "12/28",
+            cardCvv: "381"
+        };
+
+        // Initialize from localStorage or use defaults
+        function getProfile() {
+            const stored = localStorage.getItem('userProfile');
+            if (stored) {
+                return JSON.parse(stored);
+            }
+
+            // Fallback to signup details if they exist
+            const signupName = localStorage.getItem('userFullName');
+            if (signupName) {
+                return {
+                    image: defaultProfile.image,
+                    name: signupName,
+                    email: localStorage.getItem('userEmail') || defaultProfile.email,
+                    phone: defaultProfile.phone,
+                    address: localStorage.getItem('userAddress') || defaultProfile.address,
+                    upi: defaultProfile.upi,
+                    cardNumber: defaultProfile.cardNumber,
+                    cardExpiry: defaultProfile.cardExpiry,
+                    cardCvv: defaultProfile.cardCvv
+                };
+            }
+            return defaultProfile;
+        }
+
+        function saveProfile(prof) {
+            localStorage.setItem('userProfile', JSON.stringify(prof));
+            // Keep signup properties synced
+            localStorage.setItem('userFullName', prof.name);
+            localStorage.setItem('userEmail', prof.email);
+            localStorage.setItem('userAddress', prof.address);
+        }
+
+        function updateUI() {
+            const role = localStorage.getItem('userRole') || 'buyer';
+            const p = getProfile();
+
+            if (role === 'seller') {
+                // Seller profile values
+                document.getElementById('avatar-display').src = "https://lh3.googleusercontent.com/aida-public/AB6AXuAiIrwLeeGxhoNLDiQgCuHi7Kmw-4LckbH61ADptTefcexEzojO6k8-zB-QdjUHfCEoWhGA4hW-RAIPzcFTpmfqEor3J3T1mYCiePRvMgH9-1T7cZ9gwWLENtZozud60ExaNwcE7WzbgTIt360E9YTmyYPj8llovwIIjqwwVHiHS1Pb2Wk2bKGCaHlExfUe4U_XXfrKb9JG9wZtNh90WVGIwLRWJuzUlaUj42A-zMp8LPLWEe7E3w00nimPxKLVsSqZMiGBeokaeb0h";
+                document.getElementById('name-display').innerText = "Soliga Co-op Leader";
+                document.getElementById('email-phone-display').innerText = "soliga.leader@budakattu.org • +91 94480 12345";
+                document.getElementById('address-display').innerText = "BR Hills Forest Co-operative, Chamarajanagar, KA";
+
+                // Update desktop navigation to include Seller Dashboard and change header
+                const sidebarNav = document.querySelector('aside div.flex-col');
+                if (sidebarNav && !document.getElementById('sidebar-dashboard-link')) {
+                    // Update header text
+                    const headerText = sidebarNav.querySelector('.text-secondary');
+                    if (headerText) headerText.innerText = "Verified Seller";
+                    const subtext = sidebarNav.querySelector('.text-on-surface-variant');
+                    if (subtext) subtext.innerText = "Soliga Co-op Leader";
+
+                    // Insert Seller Dashboard link right after the header elements
+                    const dashLink = document.createElement('a');
+                    dashLink.id = "sidebar-dashboard-link";
+                    dashLink.className = "flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:text-secondary hover:bg-surface-container-low transition-colors font-body-lg text-body-lg rounded-lg";
+                    dashLink.href = "seller_dashboard.html";
+                    dashLink.innerHTML = `<span class="material-symbols-outlined">dashboard</span> Seller Dashboard`;
+
+                    // Insert before the first navigation item (which is discover.html)
+                    const discoverLink = sidebarNav.querySelector('a[href="discover.html"]');
+                    if (discoverLink) {
+                        sidebarNav.insertBefore(dashLink, discoverLink);
+                    }
+                }
+
+                // Update mobile bottom nav to replace Favorites with Dashboard
+                const mobileNav = document.querySelector('nav.fixed.bottom-0 div');
+                if (mobileNav && !document.getElementById('mobile-dashboard-link')) {
+                    const favoritesLink = mobileNav.querySelector('a[href="wishlist.html"]');
+                    if (favoritesLink) {
+                        const dashLinkMobile = document.createElement('a');
+                        dashLinkMobile.id = "mobile-dashboard-link";
+                        dashLinkMobile.className = "flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-white/20 transition-colors rounded-full flex-1";
+                        dashLinkMobile.href = "seller_dashboard.html";
+                        dashLinkMobile.innerHTML = `
+                            <span class="material-symbols-outlined mb-1">dashboard</span>
+                            <span class="font-label-caps text-[10px] tracking-wider font-semibold">Dashboard</span>
+                        `;
+                        mobileNav.replaceChild(dashLinkMobile, favoritesLink);
+                    }
+                }
+            } else {
+                document.getElementById('avatar-display').src = p.image;
+                document.getElementById('name-display').innerText = p.name;
+                document.getElementById('email-phone-display').innerText = `${p.email} • ${p.phone}`;
+                document.getElementById('address-display').innerText = p.address;
+            }
+            document.getElementById('mobile-cart-badge').innerText = localStorage.getItem('cartCount') || '0';
+        }
+
+        // Modal triggers
+        function openEditProfileModal() {
+            const p = getProfile();
+            document.getElementById('input-image').value = p.image;
+            document.getElementById('modal-avatar-preview').src = p.image;
+            document.getElementById('input-name').value = p.name;
+            document.getElementById('input-email').value = p.email;
+            document.getElementById('input-phone').value = p.phone;
+            document.getElementById('input-address').value = p.address;
+            document.getElementById('input-upi').value = p.upi;
+            document.getElementById('input-card-number').value = p.cardNumber;
+            document.getElementById('input-card-expiry').value = p.cardExpiry;
+            document.getElementById('input-card-cvv').value = p.cardCvv;
+
+            // Live avatar update preview
+            document.getElementById('input-image').addEventListener('input', (e) => {
+                document.getElementById('modal-avatar-preview').src = e.target.value || p.image;
+            });
+
+            const modal = document.getElementById('edit-profile-modal');
+            const container = document.getElementById('edit-modal-container');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95', 'opacity-0');
+                container.classList.add('scale-100', 'opacity-100');
+            }, 50);
+        }
+
+        function closeEditProfileModal() {
+            const modal = document.getElementById('edit-profile-modal');
+            const container = document.getElementById('edit-modal-container');
+            container.classList.remove('scale-100', 'opacity-100');
+            container.classList.add('scale-95', 'opacity-0');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function saveProfileChanges() {
+            const updated = {
+                image: document.getElementById('input-image').value || defaultProfile.image,
+                name: document.getElementById('input-name').value || defaultProfile.name,
+                email: document.getElementById('input-email').value || defaultProfile.email,
+                phone: document.getElementById('input-phone').value || defaultProfile.phone,
+                address: document.getElementById('input-address').value || defaultProfile.address,
+                upi: document.getElementById('input-upi').value || defaultProfile.upi,
+                cardNumber: document.getElementById('input-card-number').value || defaultProfile.cardNumber,
+                cardExpiry: document.getElementById('input-card-expiry').value || defaultProfile.cardExpiry,
+                cardCvv: document.getElementById('input-card-cvv').value || defaultProfile.cardCvv
+            };
+
+            saveProfile(updated);
+            updateUI();
+            closeEditProfileModal();
+            showToastNotification("Profile details successfully saved & auto-synced with checkout!");
+        }
+
+        function showToastNotification(message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-message-text').innerText = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-[-100px]', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-[-100px]', 'opacity-0');
+            }, 3000);
+        }
+
+        function shareHub() {
+            showToastNotification("Artisan Hub link copied to your clipboard!");
+        }
+
+        function goToTracking() {
+            window.location.href = 'tracking.html';
+        }
+
+        // Render Followed Sellers dynamic bento list
+        function renderFollowedSellers() {
+            const listContainer = document.getElementById('followed-sellers-list');
+            if (!listContainer) return;
+
+            let followed = JSON.parse(localStorage.getItem('followed_sellers') || '[]');
+
+            const defaultArtisans = [
+                { name: "Thimmamma", image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDtX5zmwYdN4LEaGJqwnK_8HOuiPmsL-tgOKANRiNoRJfkX9cqy0IRZ0UFilkUemCaJTtYxPggI-oetU-6S427yYvWJl8T2Gds2EBYxx-VKwkQ6nGBOzW5CVyyCe9xTeSZ8PG4AcSxXf2qA165llyARfkZWOqErIKZAEKiSd9O8fD6gvgBvI7u9U91jcGThMvWyzWERno1D-GRnmH3TTkzuarW8KzrxVEVz3BN-sqwT0h8D60wBFS3qjNoW7tjvcmuo-YPZ3eMESRVQ" },
+                { name: "Anandi Kempegowda", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100" },
+                { name: "Mahadeva Swamy", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" }
+            ];
+
+            let html = '';
+
+            if (followed.length === 0) {
+                html = defaultArtisans.map(artisan => `
+                    <div class="relative group">
+                        <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover cursor-pointer transition-all duration-300 hover:scale-125 hover:z-30 relative" src="${artisan.image}" alt="${artisan.name}">
+                        <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-secondary text-white text-[10px] font-bold rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 shadow-lg whitespace-nowrap z-50">${artisan.name} (Suggested)</span>
+                    </div>
+                `).join('') + `
+                    <div class="relative group flex items-center justify-center h-8 w-8 rounded-full bg-secondary-container text-on-secondary-container ring-2 ring-white text-[9px] font-bold cursor-pointer hover:scale-110 transition-transform">
+                        +3
+                    </div>
+                `;
+            } else {
+                html = followed.map(name => {
+                    let img = defaultArtisans.find(a => a.name.toLowerCase().includes(name.toLowerCase()))?.image || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150";
+                    return `
+                        <div class="relative group">
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover cursor-pointer transition-all duration-300 hover:scale-125 hover:z-30 relative" src="${img}" alt="${name}">
+                            <span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2.5 py-1 bg-secondary text-white text-[10px] font-bold rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-all duration-300 shadow-lg whitespace-nowrap z-50">${name}</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            listContainer.innerHTML = html;
+        }
+
+        // On Load
+        window.addEventListener('DOMContentLoaded', () => {
+            updateUI();
+            renderFollowedSellers();
+        });
+    </script>
+</body>
+
+</html>
