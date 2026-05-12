@@ -16,3 +16,5 @@ scratch_extract/
 node_modules/
 dist/
 .env
+*.hprof
+*.html
