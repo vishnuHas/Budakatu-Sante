@@ -35,7 +35,7 @@ fun AccountScreen(
     userEmail: String? = null,
     onBack: () -> Unit,
     onNavigate: (String) -> Unit,
-    onOpenDrawer: () -> Unit = {}
+    @Suppress("UNUSED_PARAMETER") onOpenDrawer: () -> Unit = {}
 ) {
     var showEditModal by remember { mutableStateOf(false) }
     var showWithdrawModal by remember { mutableStateOf(false) }
@@ -72,7 +72,7 @@ fun AccountScreen(
                 },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = Color(0xFF1F2937))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = Color(0xFF1F2937))
                     }
                 },
                 actions = {
