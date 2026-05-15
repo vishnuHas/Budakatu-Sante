@@ -41,9 +41,17 @@ Incorporates high-contrast, dark-mode-first aesthetics and dynamic micro-animati
 
 ## 📸 Application Interface
 
-| Discover Marketplace | Artisan Trade Portal | Forest Patron Account |
+### 🌲 Buyer Ecosystem Portal
+
+| Discover Marketplace | Curated Shopping Cart | Sacred Wishlist |
 | :---: | :---: | :---: |
-| <img src="./docs/screenshots/screenshot_discover.png" width="250" alt="Discover"/> | <img src="./docs/screenshots/screenshot_seller.png" width="250" alt="Seller Dashboard"/> | <img src="./docs/screenshots/screenshot_home.png" width="250" alt="Account"/> |
+| <img src="./docs/screenshots/buyer_discover.png" width="250" alt="Discover"/> | <img src="./docs/screenshots/buyer_cart.png" width="250" alt="Cart"/> | <img src="./docs/screenshots/buyer_wishlist.png" width="250" alt="Wishlist"/> |
+
+### 🛠️ Tribal Seller Trade Portal
+
+| Artisan Sales Dashboard | Seller Activity Portal | Ledger & Performance Account |
+| :---: | :---: | :---: |
+| <img src="./docs/screenshots/seller_dashboard.png" width="250" alt="Dashboard"/> | <img src="./docs/screenshots/seller_discover.png" width="250" alt="Seller Discover"/> | <img src="./docs/screenshots/seller_account.png" width="250" alt="Account"/> |
 
 ---
 
