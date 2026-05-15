@@ -37,7 +37,7 @@ fun WishlistScreen(
     onBack: () -> Unit,
     onNavigate: (String) -> Unit,
     onProductClick: (String) -> Unit,
-    onOpenDrawer: () -> Unit = {}
+    @Suppress("UNUSED_PARAMETER") onOpenDrawer: () -> Unit = {}
 ) {
     val favorites by com.budakattu.sante.data.WishlistManager.wishlistItems.collectAsState()
     var isStoriesExpanded by remember { mutableStateOf(false) }
@@ -140,7 +140,7 @@ fun WishlistScreen(
                         color = MaterialTheme.colorScheme.secondary
                     )
                     Icon(
-                        if (isStoriesExpanded) Icons.Default.ExpandLess else Icons.Default.ArrowForward,
+                        if (isStoriesExpanded) Icons.Default.ExpandLess else Icons.AutoMirrored.Filled.ArrowForward,
                         contentDescription = null,
                         modifier = Modifier.size(16.dp),
                         tint = MaterialTheme.colorScheme.secondary
@@ -184,7 +184,7 @@ fun WishlistTopBar(onBack: () -> Unit) {
         },
         navigationIcon = {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
             }
         },
         actions = {
