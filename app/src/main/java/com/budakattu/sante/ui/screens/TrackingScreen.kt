@@ -34,7 +34,7 @@ import java.util.*
 @Composable
 fun TrackingScreen(
     onBack: () -> Unit,
-    onNavigate: (String) -> Unit
+    @Suppress("UNUSED_PARAMETER") onNavigate: (String) -> Unit
 ) {
     var currentOrderIndex by remember { mutableStateOf(0) }
     val orders = sampleOrders
@@ -91,7 +91,7 @@ fun TrackingScreen(
                                 .background(Color.White.copy(alpha = 0.6f), CircleShape)
                                 .border(1.dp, Color.White.copy(alpha = 0.4f), CircleShape)
                         ) {
-                            Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
                         }
                     },
                     actions = {
@@ -283,7 +283,6 @@ fun TrackingScreen(
 @Composable
 fun TrackingTimeline(status: String) {
     val steps = listOf("Order Placed", "Collected from Origin", "Quality Checked & Packaged", "In Transit", "Delivered")
-    val statusIndex = steps.indexOf(status).let { if (it == -1) steps.indexOf("Shipped").takeIf { s -> s != -1 } ?: 0 else it }
     
     // Status normalization for display
     val normalizedStatusIndex = when(status) {
@@ -520,7 +519,7 @@ fun SupportChatModal(
                                 .size(48.dp)
                                 .background(MaterialTheme.colorScheme.secondary, CircleShape)
                         ) {
-                            Icon(Icons.Default.Send, contentDescription = "Send", tint = Color.White, modifier = Modifier.size(18.dp))
+                            Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Send", tint = Color.White, modifier = Modifier.size(18.dp))
                         }
                     }
                 }
