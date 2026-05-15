@@ -25,11 +25,14 @@ Seamlessly switches between two dedicated user interfaces tailored perfectly for
 - **Artisan (Seller) Dashboard:** Simplified inventory control, trade order pipelines, direct-to-consumer pricing adjustment, and simple product digitization.
 - **Patron (Buyer) Marketplace:** Premium discovery views focusing on product traceability, storytelling, and glassmorphic high-engagement visuals.
 
+### 📶 Offline-First Architectural Resiliency
+Engineered specifically for remote forest canopies with zero network reception. The application incorporates an integrated SQLite/Room persistence engine to buffer all local artisan listings, buyer orders, and inventory adjustments completely offline, ensuring frictionless commerce deep in the wild and auto-syncing once cellular coverage is re-acquired.
+
 ### 🛡️ Real-World Sourcing & Traceability
 Every product is hardcoded with real location metadata connecting it back to the actual tribes in **Western Ghats**, **Nilgiris**, and beyond. Patrons get clear visibility into the specific forest ranges and communities cultivating their goods.
 
-### 🤖 Hyper-Premium Product Enrichment
-Integrates natively generated AI photography and narrative enhancers (like our signature **Nano Elaichi Banana** generator) to ensure traditional artisan products look globally competitive alongside legacy premium brands.
+### 🤖 On-Device LLM Narrative Enrichment
+Integrates lightweight, state-of-the-art LLM technology (such as **Gemma 2B**) for local product name optimization and automated catalog copy generation. This enhances simple artisan descriptions into premium, high-impact narratives natively on the device with zero API latency or cost.
 
 ### 🚀 Indigenous-First Commerce Design
 Incorporates high-contrast, dark-mode-first aesthetics and dynamic micro-animations tailored for immersive storytelling rather than generic grid-based retail.
