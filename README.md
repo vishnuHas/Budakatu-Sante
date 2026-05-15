@@ -36,6 +36,14 @@ Incorporates high-contrast, dark-mode-first aesthetics and dynamic micro-animati
 
 ---
 
+## 📸 Application Interface
+
+| Discover Marketplace | Coop Sourcing Origins | Forest Patron Account |
+| :---: | :---: | :---: |
+| <img src="./docs/screenshots/screenshot_discover.png" width="250" alt="Discover"/> | <img src="./docs/screenshots/screenshot_origin.png" width="250" alt="Origin"/> | <img src="./docs/screenshots/screenshot_home.png" width="250" alt="Account"/> |
+
+---
+
 ## 🛠️ Technology Stack
 
 Budakattu Sante is a pure modern Android application. It relies on zero external dependencies from web prototypes to ensure maximum device performance and ultra-low latency.
