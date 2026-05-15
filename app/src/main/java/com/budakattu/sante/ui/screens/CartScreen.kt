@@ -49,7 +49,7 @@ fun CartScreen(
                 },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.secondary)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.secondary)
                     }
                 },
                 actions = {
@@ -463,7 +463,7 @@ fun CheckoutStepPayment(onBack: () -> Unit, onNext: () -> Unit) {
                 modifier = Modifier.weight(1f).height(56.dp),
                 shape = CircleShape
             ) {
-                Icon(Icons.Default.ArrowBack, contentDescription = null, modifier = Modifier.size(16.dp))
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, modifier = Modifier.size(16.dp))
                 Spacer(modifier = Modifier.width(8.dp))
                 Text("Back")
             }
