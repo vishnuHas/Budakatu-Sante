@@ -41,9 +41,9 @@ Incorporates high-contrast, dark-mode-first aesthetics and dynamic micro-animati
 
 ## 📸 Application Interface
 
-| Discover Marketplace | Coop Sourcing Origins | Forest Patron Account |
+| Discover Marketplace | Artisan Trade Portal | Forest Patron Account |
 | :---: | :---: | :---: |
-| <img src="./docs/screenshots/screenshot_discover.png" width="250" alt="Discover"/> | <img src="./docs/screenshots/screenshot_origin.png" width="250" alt="Origin"/> | <img src="./docs/screenshots/screenshot_home.png" width="250" alt="Account"/> |
+| <img src="./docs/screenshots/screenshot_discover.png" width="250" alt="Discover"/> | <img src="./docs/screenshots/screenshot_seller.png" width="250" alt="Seller Dashboard"/> | <img src="./docs/screenshots/screenshot_home.png" width="250" alt="Account"/> |
 
 ---
 
