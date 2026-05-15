@@ -43,9 +43,9 @@ Incorporates high-contrast, dark-mode-first aesthetics and dynamic micro-animati
 
 ### 🌲 Buyer Ecosystem Portal
 
-| Discover Marketplace | Curated Shopping Cart | Sacred Wishlist |
+| Discover Marketplace | Sourcing Origins Map | Sacred Wishlist |
 | :---: | :---: | :---: |
-| <img src="./docs/screenshots/buyer_discover.png" width="250" alt="Discover"/> | <img src="./docs/screenshots/buyer_cart.png" width="250" alt="Cart"/> | <img src="./docs/screenshots/buyer_wishlist.png" width="250" alt="Wishlist"/> |
+| <img src="./docs/screenshots/buyer_discover.png" width="250" alt="Discover"/> | <img src="./docs/screenshots/buyer_origin.png" width="250" alt="Origin"/> | <img src="./docs/screenshots/buyer_wishlist.png" width="250" alt="Wishlist"/> |
 
 ### 🛠️ Tribal Seller Trade Portal
 
