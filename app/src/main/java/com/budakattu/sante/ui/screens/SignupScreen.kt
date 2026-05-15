@@ -79,7 +79,7 @@ fun SignupScreen(
                         .border(1.dp, Color.White.copy(alpha = 0.3f), CircleShape)
                 ) {
                     Icon(
-                        imageVector = Icons.Default.ArrowBack, 
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack, 
                         contentDescription = "Back", 
                         tint = Color(0xFF161C22),
                         modifier = Modifier.size(20.dp)
@@ -305,7 +305,7 @@ fun SignupScreen(
                             )
                             Spacer(modifier = Modifier.width(12.dp))
                             Icon(
-                                imageVector = Icons.Default.ArrowForward, 
+                                imageVector = Icons.AutoMirrored.Filled.ArrowForward, 
                                 contentDescription = null,
                                 tint = Color.White
                             )
