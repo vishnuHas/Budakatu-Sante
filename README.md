@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./logo.png" width="180" alt="Budakattu Sante Logo"/>
+  <img src="./docs/logo.png" width="180" alt="Budakattu Sante Logo"/>
   
   # Budakattu Sante 🌿
   **The Sovereign Indigenous Forest Marketplace**
@@ -62,14 +62,27 @@ Budakattu Sante is a pure modern Android application. It relies on zero external
 ## 📦 Application Layout
 
 ```text
-├── app/src/main/java/com/budakattu/sante/
-│   ├── data/               # Persistence logic (PreferenceManager, Cart, LocalDB)
-│   ├── ui/
-│   │   ├── components/     # Shared Atomic UI (SideDrawer, GlassComponents)
-│   │   ├── navigation/     # Typed Jetpack Navigation routers
-│   │   ├── screens/        # Pure View layouts for both Buyer & Seller
-│   │   └── theme/          # Premium Color palettes, Fonts & Typesets
-│   └── MainActivity.kt     # Root navigation entry and state aggregator
+.
+├── app/                    # Primary Android Application module
+│   ├── src/main/
+│   │   ├── assets/         # Embedded high-res artisan product assets
+│   │   ├── java/.../sante/ # Pure Kotlin Native Implementation
+│   │   │   ├── data/       # Persistence logic (DataStore, Local DB, Models)
+│   │   │   ├── ui/
+│   │   │   │   ├── components/ # Shared Atomic UI (GlassCard, Dialogs)
+│   │   │   │   ├── navigation/ # Typed Jetpack Compose Routers
+│   │   │   │   ├── screens/    # Dynamic view layouts (Buyer & Seller Dashboards)
+│   │   │   │   └── theme/      # Master Design System (Typography, Theme palettes)
+│   │   │   └── MainActivity.kt # Primary single-activity entrypoint
+│   │   └── res/            # Compiled system XML drawables & mipmaps
+│   └── build.gradle.kts    # Local module compilation configuration
+├── docs/                   # Documentation & repository orientation
+│   ├── screenshots/        # Validated live-device screen captures
+│   └── logo.png            # Canonical brand identity insignia
+├── gradle/                 # Wrapper configurations & plugins
+├── build.gradle.kts        # Global project build wrapper configuration
+├── gradlew.bat / gradlew   # Unix/Windows command wrapper executable binaries
+└── README.md               # Sovereign project orientational manual
 ```
 
 ---
