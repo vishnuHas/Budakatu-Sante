@@ -69,7 +69,7 @@ fun OnboardingScreen(onFinish: () -> Unit) {
                     .border(1.dp, Color.White.copy(alpha = 0.3f), CircleShape)
                     .align(Alignment.TopStart)
             ) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.secondary)
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = MaterialTheme.colorScheme.secondary)
             }
         }
 
@@ -124,7 +124,7 @@ fun OnboardingScreen(onFinish: () -> Unit) {
                 )
                 if (pagerState.currentPage == 2) {
                     Spacer(modifier = Modifier.width(8.dp))
-                    Icon(Icons.Default.ArrowForward, contentDescription = null)
+                    Icon(Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null)
                 }
             }
         }
